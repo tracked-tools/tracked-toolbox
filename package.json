@@ -1,5 +1,5 @@
 {
-  "name": "ember-render-detector",
+  "name": "tracked-toolbox",
   "version": "0.0.0",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
@@ -49,6 +49,7 @@
     "eslint-plugin-ember": "^7.7.1",
     "eslint-plugin-node": "^10.0.0",
     "loader.js": "^4.7.0",
+    "tracked-built-ins": "^0.2.0",
     "qunit-dom": "^0.9.2"
   },
   "engines": {

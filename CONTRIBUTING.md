@@ -3,7 +3,7 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd ember-render-detector`
+* `cd tracked-toolbox`
 * `yarn install`
 
 ## Linting
