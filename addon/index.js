@@ -1,6 +1,7 @@
 import { assert } from '@ember/debug';
 import { get } from '@ember/object';
 import { TrackedWeakMap } from 'tracked-built-ins';
+import { next } from '@ember/runloop';
 
 export function localCopy(pathOrGetter, initializer) {
   assert(
@@ -17,6 +18,8 @@ export function localCopy(pathOrGetter, initializer) {
     let getter =
       typeof pathOrGetter === 'function'
         ? (obj, last) => pathOrGetter(obj, key, last)
+        : argsRegex.test(pathOrGetter)
+        ? obj => obj.args[pathOrGetter]
         : obj => get(obj, pathOrGetter);
 
     return {
@@ -35,10 +38,13 @@ export function localCopy(pathOrGetter, initializer) {
           // initial run. It also means that incomingValue === previousValue === undefined
           // since there is no previousValue yet. So, we initialize the value using
           // initializer, if it exists.
-          localValues.set(
-            this,
-            typeof initializer === 'function' ? initializer() : initializer
-          );
+          next(this, () => {
+            localValues.set(
+              this,
+              typeof initializer === 'function' ? initializer() : initializer
+            );
+          })
+          
         }
 
         return localValues.get(this);
