@@ -18,7 +18,7 @@ export function localCopy(pathOrGetter, initializer) {
     let getter =
       typeof pathOrGetter === 'function'
         ? (obj, last) => pathOrGetter(obj, key, last)
-        : argsRegex.test(pathOrGetter)
+        : pathOrGetter.includes('args.')
         ? obj => obj.args[pathOrGetter]
         : obj => get(obj, pathOrGetter);
 
