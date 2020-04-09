@@ -1,6 +1,6 @@
 import { assert } from '@ember/debug';
 import { get } from '@ember/object';
-import { TrackedWeakMap } from 'tracked-built-ins';
+import { TrackedWeakMap } from 'tracked-maps-and-sets';
 
 export function localCopy(pathOrGetter, initializer) {
   assert(
