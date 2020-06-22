@@ -1,6 +1,7 @@
 import { assert } from '@ember/debug';
 import { get } from '@ember/object';
 import { TrackedWeakMap } from 'tracked-maps-and-sets';
+import { createCache, getValue } from '@glimmer/tracking/primitives/cache';
 
 export function localCopy(pathOrGetter, initializer) {
   assert(
@@ -48,5 +49,28 @@ export function localCopy(pathOrGetter, initializer) {
         localValues.set(this, value);
       },
     };
+  };
+}
+
+export function cached(target, key, value) {
+  assert('@cached can only be used on getters', value && value.get);
+
+  let { get, set } = value;
+
+  let caches = new WeakMap();
+
+  return {
+    get() {
+      let cache = caches.get(this);
+
+      if (cache === undefined) {
+        cache = createCache(get.bind(this));
+        caches.set(this, cache);
+      }
+
+      return getValue(cache);
+    },
+
+    set,
   };
 }

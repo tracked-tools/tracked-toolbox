@@ -1,7 +1,8 @@
 tracked-toolbox
 ==============================================================================
 
-Helpful utilities for writing applications with Ember Octane's autotracking!
+Helpful utilities for writing applications with Ember Octane's revision
+tracking!
 
 
 Compatibility
@@ -22,6 +23,26 @@ ember install tracked-toolbox
 
 Usage
 ------------------------------------------------------------------------------
+
+### `@cached`
+
+Adds weak-caching to a getter, so that it tracks its execution, and only updates
+when tracked state that the getter used changes.
+
+```js
+import { tracked } from '@glimmer/tracking';
+import { cached } from 'tracked-toolbox';
+
+class Person {
+  @tracked firstName = 'Tom';
+  @tracked lastName = 'Dale';
+
+  @cached
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+```
 
 ### `@localCopy`
 
