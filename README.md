@@ -44,6 +44,20 @@ class Person {
 }
 ```
 
+### `@dedupeTracked`
+
+Turns a field in a deduped `@tracked` property. If you set the field to the same
+value as it is currently, it will not notify a property change (thus, deduping
+property changes). Otherwise, it is exactly the same as `@tracked`.
+
+```js
+import { dedupeTracked } from 'tracked-toolbox';
+
+class Counter {
+  @dedupeTracked count = 0;
+}
+```
+
 ### `@localCopy`
 
 Creates a local copy of a remote value. The local copy can be updated locally,

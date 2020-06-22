@@ -1,5 +1,6 @@
 import { assert } from '@ember/debug';
 import { get } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { TrackedWeakMap } from 'tracked-maps-and-sets';
 import { createCache, getValue } from '@glimmer/tracking/primitives/cache';
 
@@ -73,4 +74,30 @@ export function cached(target, key, value) {
 
     set,
   };
+}
+
+export function dedupeTracked(target, key, desc) {
+  let { initializer } = desc;
+  let { get, set } = tracked(target, key, desc);
+
+  let values = new WeakMap();
+
+  return {
+    get() {
+      if (!values.has(this)) {
+        let value = initializer.call(this);
+        values.set(this, value);
+        set.call(this, value);
+      }
+
+      return get.call(this);
+    },
+
+    set(value) {
+      if (!values.has(this) || value !== values.get(this)) {
+        values.set(this, value);
+        set.call(this, value);
+      }
+    }
+  }
 }

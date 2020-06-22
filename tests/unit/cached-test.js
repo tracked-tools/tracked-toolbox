@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { tracked } from '@glimmer/tracking';
 import { cached } from 'tracked-toolbox';
 
-module('Unit | Utils | @localCopy', () => {
+module('Unit | Utils | @cached', () => {
   test('it works', (assert) => {
     class Foo {
       get counter() {
