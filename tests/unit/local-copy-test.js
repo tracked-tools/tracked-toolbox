@@ -63,7 +63,7 @@ module('Unit | Utils | @localCopy', () => {
       }
 
       new Local();
-    }, /@localCopy\(\) must be given a path or getter function/);
+    }, /@localCopy\(\) must be given a memo path or memo function/);
   });
 
   test('value initializer works', assert => {

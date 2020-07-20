@@ -132,6 +132,33 @@ In this example, it allows you to have a local copy of an array. Mutations to
 the local array will not affect the upstream array, but changes to the upstream
 array will update the local copy.
 
+### `@trackedReset`
+
+Similar to `@localCopy`, but instead of copying the remote value, it will reset
+to the class field's default value when another value changes.
+
+```js
+export default class CustomSelect extends Component {
+  @trackedReset('args.selectableValues') selected = null;
+}
+```
+
+You can also provide a configuration object with an `update` function, which can
+be used to provide a different value than the original on updates.
+
+```js
+@trackedReset({
+  memo: 'args.items.length',
+  update(component, key, last) {
+    return Math.min(last, this.args.items.length);
+  }
+})
+selectedIndex = 0;
+```
+
+`memo` must either be a path or a function that returns the value to memoize
+against.
+
 Contributing
 ------------------------------------------------------------------------------
 
