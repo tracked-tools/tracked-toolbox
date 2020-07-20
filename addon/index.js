@@ -1,53 +1,116 @@
 import { assert } from '@ember/debug';
 import { get } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { TrackedWeakMap } from 'tracked-maps-and-sets';
 import { createCache, getValue } from '@glimmer/tracking/primitives/cache';
 
-export function localCopy(pathOrGetter, initializer) {
+class Meta {
+  prevRemote;
+  peek;
+  @tracked value;
+}
+
+function getOrCreateMeta(instance, metas, initializer) {
+  let meta = metas.get(instance);
+
+  if (meta === undefined) {
+    meta = new Meta();
+    metas.set(instance, meta);
+
+    meta.value = meta.peek =
+      typeof initializer === 'function' ? initializer.call(instance) : initializer;
+  }
+
+  return meta;
+}
+
+export function localCopy(memo, initializer) {
   assert(
-    `@localCopy() must be given a path or getter function as its first argument, received \`${String(
-      pathOrGetter
+    `@localCopy() must be given a memo path or memo function as its first argument, received \`${String(
+      memo
     )}\``,
-    typeof pathOrGetter === 'string' || typeof pathOrGetter === 'function'
+    typeof memo === 'string' || typeof memo === 'function'
   );
 
-  let previousValues = new WeakMap();
-  let localValues = new TrackedWeakMap();
+  let metas = new WeakMap();
 
   return (_prototype, key) => {
-    let getter =
-      typeof pathOrGetter === 'function'
-        ? (obj, last) => pathOrGetter(obj, key, last)
-        : obj => get(obj, pathOrGetter);
+    let memoFn =
+      typeof memo === 'function'
+        ? (obj, last) => memo.call(obj, obj, key, last)
+        : (obj) => get(obj, memo);
 
     return {
       get() {
-        let previousValue = previousValues.get(this);
-        let incomingValue = getter(this, previousValue);
+        let meta = getOrCreateMeta(this, metas, initializer);
+        let { prevRemote } = meta;
 
-        if (incomingValue !== previousValue) {
+        let incomingValue = memoFn(this, prevRemote);
+
+        if (prevRemote !== incomingValue) {
           // If the incoming value is not the same as the previous incoming value,
           // update the local value to match the new incoming value, and update
           // the previous incoming value.
-          localValues.set(this, incomingValue);
-          previousValues.set(this, incomingValue);
-        } else if (initializer !== undefined && !localValues.has(this)) {
-          // If localValues doesn't have a value yet, it means that this is the
-          // initial run. It also means that incomingValue === previousValue === undefined
-          // since there is no previousValue yet. So, we initialize the value using
-          // initializer, if it exists.
-          localValues.set(
-            this,
-            typeof initializer === 'function' ? initializer() : initializer
-          );
+          meta.value = meta.prevRemote = incomingValue;
         }
 
-        return localValues.get(this);
+        return meta.value;
       },
 
       set(value) {
-        localValues.set(this, value);
+        getOrCreateMeta(this, metas, initializer).value = value;
+      },
+    };
+  };
+}
+
+export function trackedReset(memoOrConfig) {
+  assert(
+    `@trackedReset() must be given a memo path, a memo function, or config object with a memo path or function as its first argument, received \`${String(
+      memoOrConfig
+    )}\``,
+    typeof memoOrConfig === 'string' ||
+      typeof memoOrConfig === 'function' ||
+      (typeof memoOrConfig === 'object' &&
+        memoOrConfig !== null &&
+        memoOrConfig.memo !== undefined)
+  );
+
+  let metas = new WeakMap();
+
+  return (_prototype, key, desc) => {
+    let memo, update;
+    let initializer = desc.initializer ?? (() => undefined);
+
+    if (typeof memoOrConfig === 'object') {
+      memo = memoOrConfig.memo;
+      update = memoOrConfig.update ?? initializer;
+    } else {
+      memo = memoOrConfig;
+      update = initializer;
+    }
+
+    let memoFn =
+      typeof memo === 'function'
+        ? (obj, last) => memo.call(obj, obj, key, last)
+        : (obj) => get(obj, memo);
+
+    return {
+      get() {
+        let meta = getOrCreateMeta(this, metas, initializer);
+        let { prevRemote } = meta;
+
+        let incomingValue = memoFn(this, prevRemote);
+
+        if (incomingValue !== prevRemote) {
+          meta.prevRemote = incomingValue;
+          meta.value = meta.peek = update.call(this, this, key, meta.peek);
+        }
+
+        return meta.value;
+      },
+
+      set(value) {
+        getOrCreateMeta(this, metas, initializer).value = value;
       },
     };
   };
@@ -98,6 +161,6 @@ export function dedupeTracked(target, key, desc) {
         values.set(this, value);
         set.call(this, value);
       }
-    }
-  }
+    },
+  };
 }
