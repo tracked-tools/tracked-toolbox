@@ -148,7 +148,7 @@ export function dedupeTracked(target, key, desc) {
   return {
     get() {
       if (!values.has(this)) {
-        let value = initializer.call(this);
+        let value = initializer?.call(this);
         values.set(this, value);
         set.call(this, value);
       }
