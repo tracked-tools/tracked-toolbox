@@ -1,3 +1,11 @@
+## v1.2.1 (2020-08-21)
+
+#### :bug: Bug Fix
+* [#15](https://github.com/pzuraq/tracked-toolbox/pull/15) add failing test for @dedupedTracked without an initializer ([@miguelcobain](https://github.com/miguelcobain))
+
+#### Committers: 1
+- Miguel Andrade ([@miguelcobain](https://github.com/miguelcobain))
+
 ## v1.2.0 (2020-07-20)
 
 #### :rocket: Enhancement
