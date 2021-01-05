@@ -1,3 +1,4 @@
+import EmberObject from '@ember/object';
 import { module, test } from 'qunit';
 import { dedupeTracked, cached } from 'tracked-toolbox';
 
@@ -59,6 +60,37 @@ module('Unit | Utils | @dedupeTracked', () => {
     person._name = 'Zoey';
 
     assert.equal(person.name, 'Zoey', 'name is correct');
+    assert.equal(count, 2, 'getter is called again after updating to a different value');
+  });
+
+  test('it works with an EmberObject', (assert) => {
+    let count = 0;
+
+    class Person extends EmberObject {
+      @dedupeTracked _name;
+
+      @cached
+      get name() {
+        count++;
+
+        return this._name;
+      }
+    }
+
+    const person = Person.create({ _name: 'Zoey' });
+
+    assert.equal(person._name, 'Zoey', 'name should be initialized correctly');
+    assert.equal(person.name, 'Zoey', 'name should be initialized correctly');
+    assert.equal(count, 1, 'getter is called the first time');
+
+    person._name = 'Zoey';
+
+    assert.equal(person.name, 'Zoey', 'name is unchanged');
+    assert.equal(count, 1, 'getter is not called again after updating to the same value');
+
+    person._name = 'Tomster';
+
+    assert.equal(person.name, 'Tomster', 'name is correct');
     assert.equal(count, 2, 'getter is called again after updating to a different value');
   });
 });
