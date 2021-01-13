@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "paths": { "tracked-toolbox": [".."], "tracked-toolbox/*": ["../*"] }
+  }
+}
