@@ -64,7 +64,7 @@ export function localCopy(memo, initializer) {
           return;
         }
 
-        getOrCreateMeta(this, metas, initializer, memoFn(this)).value = value;
+        getOrCreateMeta(this, metas, initializer).value = value;
       },
     };
   };
