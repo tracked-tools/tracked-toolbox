@@ -1,3 +1,13 @@
+## v1.2.2 (2021-03-23)
+
+#### :bug: Bug Fix
+* [#25](https://github.com/pzuraq/tracked-toolbox/pull/25) [BUGFIX] initialize meta on the first local set ([@jackson-dean](https://github.com/jackson-dean))
+
+#### Committers: 3
+- Chris Krycho ([@chriskrycho](https://github.com/chriskrycho))
+- Jackson Dean ([@jackson-dean](https://github.com/jackson-dean))
+- Nathaniel Furniss ([@nlfurniss](https://github.com/nlfurniss))
+
 ## v1.2.1 (2020-08-21)
 
 #### :bug: Bug Fix
