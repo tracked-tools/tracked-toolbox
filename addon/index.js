@@ -9,14 +9,13 @@ class Meta {
   @tracked value;
 }
 
-function getOrCreateMeta(instance, metas, initializer, incomingValue) {
+function getOrCreateMeta(instance, metas, initializer) {
   let meta = metas.get(instance);
 
   if (meta === undefined) {
     meta = new Meta();
     metas.set(instance, meta);
 
-    meta.prevRemote = incomingValue;
     meta.value = meta.peek =
       typeof initializer === 'function' ? initializer.call(instance) : initializer;
   }
@@ -58,6 +57,13 @@ export function localCopy(memo, initializer) {
       },
 
       set(value) {
+        if(!metas.has(this)) {
+          let meta = getOrCreateMeta(this, metas, initializer);
+          meta.prevRemote = memoFn(this);
+          meta.value = value;
+          return;
+        }
+
         getOrCreateMeta(this, metas, initializer, memoFn(this)).value = value;
       },
     };
