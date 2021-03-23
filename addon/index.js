@@ -57,6 +57,13 @@ export function localCopy(memo, initializer) {
       },
 
       set(value) {
+        if (!metas.has(this)) {
+          let meta = getOrCreateMeta(this, metas, initializer);
+          meta.prevRemote = memoFn(this);
+          meta.value = value;
+          return;
+        }
+
         getOrCreateMeta(this, metas, initializer).value = value;
       },
     };

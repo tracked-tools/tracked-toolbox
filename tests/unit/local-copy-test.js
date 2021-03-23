@@ -123,4 +123,32 @@ module('Unit | Utils | @localCopy', () => {
     assert.equal(local.value, 789, 'local value updates to new remote value');
     assert.equal(remote.value, 789, 'remote value is updated');
   });
+
+  test('it works when setting the value locally before accessing it', assert => {
+    class Remote {
+      value = 123;
+    }
+
+    let remote = new Remote();
+
+    class Local {
+      remote = remote;
+
+      @localCopy('remote.value') value;
+    }
+
+    let local = new Local();
+
+    // set the value before reading it
+    local.value = 456;
+
+    assert.equal(local.value, 456, 'local value updates correctly');
+    assert.equal(remote.value, 123, 'remote value does not update');
+
+    remote.value = 789;
+
+    assert.equal(local.value, 789, 'local value updates to new remote value');
+    assert.equal(remote.value, 789, 'remote value is updated');
+  });
+
 });
