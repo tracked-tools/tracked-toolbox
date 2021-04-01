@@ -1,4 +1,4 @@
-import { assert } from '@ember/debug';
+import { assert, deprecate } from '@ember/debug';
 import { get } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { createCache, getValue } from '@glimmer/tracking/primitives/cache';
@@ -30,6 +30,11 @@ export function localCopy(memo, initializer) {
     )}\``,
     typeof memo === 'string' || typeof memo === 'function'
   );
+  deprecate('Using a memoization function with @localCopy has been deprecated. Consider using @trackedReset instead.', typeof memo !== 'function', {
+    id: 'local-copy-memo-fn',
+    for: 'tracked-toolbox',
+    until: '2.0.0',
+  });
 
   let metas = new WeakMap();
 
