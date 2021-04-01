@@ -138,35 +138,6 @@ export default class CustomInput extends Component {
 If the initializer is a function, it will be called and its return value will be
 used as the default value.
 
-You can also provide a getter function instead of a path to the decorator, which
-receives the object, key, and last as arguments:
-
-```js
-export default class CustomInput extends Component {
-  @localCopy((component) => component.args.text) text;
-}
-```
-
-This allows you to get a remote value using more complex logic. You can also use
-this to do more complex logic for checking the value for changes, and for
-deriving the local value:
-
-```js
-export default class MyComponent extends Component {
-  @localCopy((component, key, last) => {
-    let arr = component.args.arr;
-
-    let changed = arr.some((value, index) => value !== last[index]);
-
-    return changed ? arr.slice() : last;
-  }) arr;
-}
-```
-
-In this example, it allows you to have a local copy of an array. Mutations to
-the local array will not affect the upstream array, but changes to the upstream
-array will update the local copy.
-
 #### `@trackedReset`
 
 Similar to `@localCopy`, but instead of copying the remote value, it will reset
@@ -196,7 +167,7 @@ against.
 
 ##### When to use it
 
-`@trackedReset` is primarily useful in contexts like a component which manages 
+`@trackedReset` is primarily useful in contexts like a component which manages
 the state of an overall page, and therefore which needs to update when the page
 changes. For example, you might have a component which represents a form for a
 given profile, at `/profile/:id`. When navigating to edit a different profile,
