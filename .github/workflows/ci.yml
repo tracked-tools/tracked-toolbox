@@ -1,0 +1,104 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    # filtering branches here prevents duplicate builds from pull_request and push
+    branches:
+      - main
+      - master
+  schedule:
+    # Check on floating deps weekly
+    - cron: '0 3 * * 0' # every Sunday at 3am
+
+env:
+  CI: true
+
+jobs:
+  tests:
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+    name: Base Tests
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node:
+        - "12"
+        - "14"
+    steps:
+    - uses: actions/checkout@v2
+    - uses: volta-cli/action@v1
+      with:
+        node-version: ${{ matrix.node }}
+
+    - run: yarn install --frozen-lockfile
+
+    - name: Test with ${{ matrix.node }}
+      run: yarn test
+
+  floating-dependencies:
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+    name: Floating Dependencies
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node:
+        - "12"
+        - "14"
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: volta-cli/action@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - run: yarn install --no-lockfile
+
+      - name: Test with Node ${{ matrix.node }}
+        run: yarn test
+
+  try-scenarios:
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+    name: "Compatibility"
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: true
+      matrix:
+        ember-try-scenario:
+          - ember-lts-3.24
+          - ember-release
+          - ember-beta
+          - ember-canary
+          - embroider
+    steps:
+      - uses: actions/checkout@v2
+      - uses: volta-cli/action@v1
+        with:
+          node-version: 12.x
+      - name: install dependencies
+        run: yarn install --frozen-lockfile
+      - name: test
+        run: node_modules/.bin/ember try:one ${{ matrix.ember-try-scenario }} --skip-cleanup
+
+
+  # publish:
+  #   name: Release
+  #   runs-on: ubuntu-latest
+  #   if: github.ref == 'refs/heads/main'
+  #   needs: [tests, floating-dependencies, try-scenarios]
+
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         persist-credentials: false
+  #     - uses: volta-cli/action@v1
+  #     - run: yarn install
+
+  #     - name: Release
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  #       run: yarn semantic-release

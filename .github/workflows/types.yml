@@ -1,0 +1,27 @@
+name: Types
+
+on:
+  pull_request:
+  push:
+    # filtering branches here prevents duplicate builds from pull_request and push
+    branches:
+      - main
+      - master
+
+env:
+  CI: true
+
+jobs:
+  types:
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+    name: Type Checking
+    runs-on: ubuntu-latest
+
+    # steps:
+    #   - uses: actions/checkout@v2
+    #   - uses: volta-cli/action@v1
+
+    #   - run: yarn install --frozen-lockfile
+
+    #   - name: Type Checking
+    #     run: yarn tsc --build
