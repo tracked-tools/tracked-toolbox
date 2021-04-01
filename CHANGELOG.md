@@ -1,3 +1,14 @@
+## v1.2.3 (2021-04-01)
+
+#### :bug: Bug Fix
+* [#27](https://github.com/pzuraq/tracked-toolbox/pull/27) Deprecate @localCopy memo function ([@pzuraq](https://github.com/pzuraq))
+
+#### :house: Internal
+* [#28](https://github.com/pzuraq/tracked-toolbox/pull/28) convert to GH actions ([@pzuraq](https://github.com/pzuraq))
+
+#### Committers: 1
+- Chris Garrett ([@pzuraq](https://github.com/pzuraq))
+
 ## v1.2.2 (2021-03-23)
 
 #### :bug: Bug Fix
