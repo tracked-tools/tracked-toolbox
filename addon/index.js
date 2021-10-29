@@ -17,7 +17,9 @@ function getOrCreateMeta(instance, metas, initializer) {
     metas.set(instance, meta);
 
     meta.value = meta.peek =
-      typeof initializer === 'function' ? initializer.call(instance) : initializer;
+      typeof initializer === 'function'
+        ? initializer.call(instance)
+        : initializer;
   }
 
   return meta;
@@ -30,12 +32,16 @@ export function localCopy(memo, initializer) {
     )}\``,
     typeof memo === 'string' || typeof memo === 'function'
   );
-  deprecate('Using a memoization function with @localCopy has been deprecated. Consider using @trackedReset instead.', typeof memo !== 'function', {
-    id: 'local-copy-memo-fn',
-    for: 'tracked-toolbox',
-    since: '1.2.3',
-    until: '2.0.0',
-  });
+  deprecate(
+    'Using a memoization function with @localCopy has been deprecated. Consider using @trackedReset instead.',
+    typeof memo !== 'function',
+    {
+      id: 'local-copy-memo-fn',
+      for: 'tracked-toolbox',
+      since: '1.2.3',
+      until: '2.0.0',
+    }
+  );
 
   let metas = new WeakMap();
 

@@ -66,7 +66,7 @@ module('Unit | Utils | @localCopy', () => {
     }, /@localCopy\(\) must be given a memo path or memo function/);
   });
 
-  test('value initializer works', assert => {
+  test('value initializer works', (assert) => {
     class Remote {
       value;
     }
@@ -95,7 +95,7 @@ module('Unit | Utils | @localCopy', () => {
     assert.equal(remote.value, 789, 'remote value is updated');
   });
 
-  test('function initializer works', assert => {
+  test('function initializer works', (assert) => {
     class Remote {
       value;
     }
@@ -124,7 +124,7 @@ module('Unit | Utils | @localCopy', () => {
     assert.equal(remote.value, 789, 'remote value is updated');
   });
 
-  test('it works when setting the value locally before accessing it', assert => {
+  test('it works when setting the value locally before accessing it', (assert) => {
     class Remote {
       value = 123;
     }
@@ -150,5 +150,4 @@ module('Unit | Utils | @localCopy', () => {
     assert.equal(local.value, 789, 'local value updates to new remote value');
     assert.equal(remote.value, 789, 'remote value is updated');
   });
-
 });
