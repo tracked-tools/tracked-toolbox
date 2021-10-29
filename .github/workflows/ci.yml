@@ -1,105 +1,81 @@
 name: CI
 
 on:
-  pull_request:
   push:
-    # filtering branches here prevents duplicate builds from pull_request and push
     branches:
       - main
       - master
       - v1.x
-  schedule:
-    # Check on floating deps weekly
-    - cron: '0 3 * * 0' # every Sunday at 3am
-
-env:
-  CI: true
+  pull_request: {}
 
 jobs:
-  tests:
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
-    name: Base Tests
-    timeout-minutes: 5
+  test:
+    name: "Tests"
     runs-on: ubuntu-latest
+
     strategy:
+      fail-fast: false
       matrix:
         node:
-        - "12"
-        - "14"
-    steps:
-    - uses: actions/checkout@v2
-    - uses: volta-cli/action@v1
-      with:
-        node-version: ${{ matrix.node }}
-
-    - run: yarn install --frozen-lockfile
-
-    - name: Test with ${{ matrix.node }}
-      run: yarn test
-
-  floating-dependencies:
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
-    name: Floating Dependencies
-    timeout-minutes: 5
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node:
-        - "12"
-        - "14"
+          - "12.x"
+          - "14.x"
 
     steps:
       - uses: actions/checkout@v2
-      - uses: volta-cli/action@v1
+      - name: Install Node
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
+          cache: yarn
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+      - name: Lint
+        run: yarn lint:js
+      - name: Run Tests
+        run: yarn test
 
-      - run: yarn install --no-lockfile
+  floating:
+    name: "Floating Dependencies"
+    runs-on: ubuntu-latest
 
-      - name: Test with Node ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+          cache: yarn
+      - name: Install Dependencies
+        run: yarn install --no-lockfile
+      - name: Run Tests
         run: yarn test
 
   try-scenarios:
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
-    name: "Compatibility"
-    timeout-minutes: 5
+    name: ${{ matrix.try-scenario }}
     runs-on: ubuntu-latest
+    needs: "test"
 
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
-        ember-try-scenario:
+        try-scenario:
+          - ember-lts-3.20
           - ember-lts-3.24
           - ember-release
           - ember-beta
           - ember-canary
-          - embroider
+          - ember-classic
+          - ember-default-with-jquery
+    #          - embroider-safe
+    #          - embroider-optimized
+
     steps:
       - uses: actions/checkout@v2
-      - uses: volta-cli/action@v1
+      - name: Install Node
+        uses: actions/setup-node@v2
         with:
           node-version: 12.x
-      - name: install dependencies
+          cache: yarn
+      - name: Install Dependencies
         run: yarn install --frozen-lockfile
-      - name: test
-        run: node_modules/.bin/ember try:one ${{ matrix.ember-try-scenario }} --skip-cleanup
-
-
-  # publish:
-  #   name: Release
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/main'
-  #   needs: [tests, floating-dependencies, try-scenarios]
-
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         persist-credentials: false
-  #     - uses: volta-cli/action@v1
-  #     - run: yarn install
-
-  #     - name: Release
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  #       run: yarn semantic-release
+      - name: Run Tests
+        run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
