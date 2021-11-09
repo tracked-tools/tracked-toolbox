@@ -29,9 +29,9 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Lint
-        run: yarn lint:js
+        run: yarn lint
       - name: Run Tests
-        run: yarn test
+        run: yarn test:ember
 
   floating:
     name: "Floating Dependencies"
@@ -46,7 +46,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install --no-lockfile
       - name: Run Tests
-        run: yarn test
+        run: yarn test:ember
 
   try-scenarios:
     name: ${{ matrix.try-scenario }}
@@ -64,8 +64,8 @@ jobs:
           - ember-canary
           - ember-classic
           - ember-default-with-jquery
-#          - embroider-safe
-#          - embroider-optimized
+          - embroider-safe
+          - embroider-optimized
 
     steps:
       - uses: actions/checkout@v2
