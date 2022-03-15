@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { dedupeTracked, cached } from 'tracked-toolbox';
 
 module('Unit | Utils | @dedupeTracked', () => {
-  test('it works', (assert) => {
+  test('it works', function (assert) {
     let count = 0;
 
     class Person {
@@ -18,21 +18,29 @@ module('Unit | Utils | @dedupeTracked', () => {
 
     const person = new Person();
 
-    assert.equal(person.name, 'Tomster', 'name is correct');
-    assert.equal(count, 1, 'getter is called the first time');
+    assert.strictEqual(person.name, 'Tomster', 'name is correct');
+    assert.strictEqual(count, 1, 'getter is called the first time');
 
     person._name = 'Tomster';
 
-    assert.equal(person.name, 'Tomster', 'name is correct');
-    assert.equal(count, 1, 'getter is not called again after updating to the same value');
+    assert.strictEqual(person.name, 'Tomster', 'name is correct');
+    assert.strictEqual(
+      count,
+      1,
+      'getter is not called again after updating to the same value'
+    );
 
     person._name = 'Zoey';
 
-    assert.equal(person.name, 'Zoey', 'name is correct');
-    assert.equal(count, 2, 'getter is called again after updating to a different value');
+    assert.strictEqual(person.name, 'Zoey', 'name is correct');
+    assert.strictEqual(
+      count,
+      2,
+      'getter is called again after updating to a different value'
+    );
   });
 
-  test('it works without an initializer', (assert) => {
+  test('it works without an initializer', function (assert) {
     let count = 0;
 
     class Person {
@@ -48,21 +56,33 @@ module('Unit | Utils | @dedupeTracked', () => {
 
     const person = new Person();
 
-    assert.equal(person.name, undefined, 'name should start as undefined');
-    assert.equal(count, 1, 'getter is called the first time');
+    assert.strictEqual(
+      person.name,
+      undefined,
+      'name should start as undefined'
+    );
+    assert.strictEqual(count, 1, 'getter is called the first time');
 
     person._name = undefined;
 
-    assert.equal(person.name, undefined, 'name is still undefined');
-    assert.equal(count, 1, 'getter is not called again after updating to the same value');
+    assert.strictEqual(person.name, undefined, 'name is still undefined');
+    assert.strictEqual(
+      count,
+      1,
+      'getter is not called again after updating to the same value'
+    );
 
     person._name = 'Zoey';
 
-    assert.equal(person.name, 'Zoey', 'name is correct');
-    assert.equal(count, 2, 'getter is called again after updating to a different value');
+    assert.strictEqual(person.name, 'Zoey', 'name is correct');
+    assert.strictEqual(
+      count,
+      2,
+      'getter is called again after updating to a different value'
+    );
   });
 
-  test('it requires no parameters or exactly one comparator', (assert) => {
+  test('it requires no parameters or exactly one comparator', function (assert) {
     assert.throws(() => {
       // eslint-disable-next-line no-unused-vars
       class Person {
@@ -85,7 +105,7 @@ module('Unit | Utils | @dedupeTracked', () => {
     });
   });
 
-  test('it works when passed a custom comparator', (assert) => {
+  test('it works when passed a custom comparator', function (assert) {
     let count = 0;
 
     class Person {
@@ -101,17 +121,25 @@ module('Unit | Utils | @dedupeTracked', () => {
 
     const person = new Person();
 
-    assert.equal(person.name, 'foo', 'name is correct');
-    assert.equal(count, 1, 'getter is called the first time');
+    assert.strictEqual(person.name, 'foo', 'name is correct');
+    assert.strictEqual(count, 1, 'getter is called the first time');
 
     person._name = 'bar';
 
-    assert.equal(person.name, 'foo', 'name is correct');
-    assert.equal(count, 1, 'getter is not called again after updating to the "same" value');
+    assert.strictEqual(person.name, 'foo', 'name is correct');
+    assert.strictEqual(
+      count,
+      1,
+      'getter is not called again after updating to the "same" value'
+    );
 
     person._name = 'Zoey';
 
-    assert.equal(person.name, 'Zoey', 'name is correct');
-    assert.equal(count, 2, 'getter is called again after updating to a different value');
+    assert.strictEqual(person.name, 'Zoey', 'name is correct');
+    assert.strictEqual(
+      count,
+      2,
+      'getter is called again after updating to a different value'
+    );
   });
 });

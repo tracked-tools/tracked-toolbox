@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { localCopy } from 'tracked-toolbox';
 
 module('Unit | Utils | @localCopy', () => {
-  test('it works', (assert) => {
+  test('it works', function (assert) {
     class Remote {
       value = 123;
     }
@@ -17,20 +17,24 @@ module('Unit | Utils | @localCopy', () => {
 
     let local = new Local();
 
-    assert.equal(local.value, 123, 'defaults to the remote value');
+    assert.strictEqual(local.value, 123, 'defaults to the remote value');
 
     local.value = 456;
 
-    assert.equal(local.value, 456, 'local value updates correctly');
-    assert.equal(remote.value, 123, 'remote value does not update');
+    assert.strictEqual(local.value, 456, 'local value updates correctly');
+    assert.strictEqual(remote.value, 123, 'remote value does not update');
 
     remote.value = 789;
 
-    assert.equal(local.value, 789, 'local value updates to new remote value');
-    assert.equal(remote.value, 789, 'remote value is updated');
+    assert.strictEqual(
+      local.value,
+      789,
+      'local value updates to new remote value'
+    );
+    assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
 
-  test('it works with a getter', (assert) => {
+  test('it works with a getter', function (assert) {
     class Remote {
       value = 123;
     }
@@ -43,20 +47,24 @@ module('Unit | Utils | @localCopy', () => {
 
     let local = new Local();
 
-    assert.equal(local.value, 123, 'defaults to the remote value');
+    assert.strictEqual(local.value, 123, 'defaults to the remote value');
 
     local.value = 456;
 
-    assert.equal(local.value, 456, 'local value updates correctly');
-    assert.equal(remote.value, 123, 'remote value does not update');
+    assert.strictEqual(local.value, 456, 'local value updates correctly');
+    assert.strictEqual(remote.value, 123, 'remote value does not update');
 
     remote.value = 789;
 
-    assert.equal(local.value, 789, 'local value updates to new remote value');
-    assert.equal(remote.value, 789, 'remote value is updated');
+    assert.strictEqual(
+      local.value,
+      789,
+      'local value updates to new remote value'
+    );
+    assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
 
-  test('it requires a path or getter', (assert) => {
+  test('it requires a path or getter', function (assert) {
     assert.throws(() => {
       class Local {
         @localCopy value;
@@ -66,7 +74,7 @@ module('Unit | Utils | @localCopy', () => {
     }, /@localCopy\(\) must be given a memo path or memo function/);
   });
 
-  test('value initializer works', assert => {
+  test('value initializer works', function (assert) {
     class Remote {
       value;
     }
@@ -81,21 +89,25 @@ module('Unit | Utils | @localCopy', () => {
 
     let local = new Local();
 
-    assert.equal(local.value, 123, 'defaults to the initializer value');
-    assert.equal(remote.value, undefined, 'remote value is undefined');
+    assert.strictEqual(local.value, 123, 'defaults to the initializer value');
+    assert.strictEqual(remote.value, undefined, 'remote value is undefined');
 
     local.value = 456;
 
-    assert.equal(local.value, 456, 'local value updates correctly');
-    assert.equal(remote.value, undefined, 'remote value does not update');
+    assert.strictEqual(local.value, 456, 'local value updates correctly');
+    assert.strictEqual(remote.value, undefined, 'remote value does not update');
 
     remote.value = 789;
 
-    assert.equal(local.value, 789, 'local value updates to new remote value');
-    assert.equal(remote.value, 789, 'remote value is updated');
+    assert.strictEqual(
+      local.value,
+      789,
+      'local value updates to new remote value'
+    );
+    assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
 
-  test('function initializer works', assert => {
+  test('function initializer works', function (assert) {
     class Remote {
       value;
     }
@@ -110,21 +122,25 @@ module('Unit | Utils | @localCopy', () => {
 
     let local = new Local();
 
-    assert.equal(local.value, 123, 'defaults to the initializer value');
-    assert.equal(remote.value, undefined, 'remote value is undefined');
+    assert.strictEqual(local.value, 123, 'defaults to the initializer value');
+    assert.strictEqual(remote.value, undefined, 'remote value is undefined');
 
     local.value = 456;
 
-    assert.equal(local.value, 456, 'local value updates correctly');
-    assert.equal(remote.value, undefined, 'remote value does not update');
+    assert.strictEqual(local.value, 456, 'local value updates correctly');
+    assert.strictEqual(remote.value, undefined, 'remote value does not update');
 
     remote.value = 789;
 
-    assert.equal(local.value, 789, 'local value updates to new remote value');
-    assert.equal(remote.value, 789, 'remote value is updated');
+    assert.strictEqual(
+      local.value,
+      789,
+      'local value updates to new remote value'
+    );
+    assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
 
-  test('it works when setting the value locally before accessing it', assert => {
+  test('it works when setting the value locally before accessing it', function (assert) {
     class Remote {
       value = 123;
     }
@@ -142,13 +158,16 @@ module('Unit | Utils | @localCopy', () => {
     // set the value before reading it
     local.value = 456;
 
-    assert.equal(local.value, 456, 'local value updates correctly');
-    assert.equal(remote.value, 123, 'remote value does not update');
+    assert.strictEqual(local.value, 456, 'local value updates correctly');
+    assert.strictEqual(remote.value, 123, 'remote value does not update');
 
     remote.value = 789;
 
-    assert.equal(local.value, 789, 'local value updates to new remote value');
-    assert.equal(remote.value, 789, 'remote value is updated');
+    assert.strictEqual(
+      local.value,
+      789,
+      'local value updates to new remote value'
+    );
+    assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
-
 });

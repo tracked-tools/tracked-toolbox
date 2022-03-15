@@ -8,8 +8,8 @@ tracking!
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v3.8 or above
-* Ember CLI v2.13 or above
+* Ember.js v3.20 or above
+* Ember CLI v3.20 or above
 * Node.js v12 or above
 
 
