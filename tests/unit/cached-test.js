@@ -3,7 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { cached } from 'tracked-toolbox';
 
 module('Unit | Utils | @cached', () => {
-  test('it works', (assert) => {
+  test('it works', function (assert) {
     class Foo {
       get counter() {
         if (!this.initial) {
