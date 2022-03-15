@@ -26,7 +26,11 @@ module('Unit | Utils | @trackedReset', () => {
 
     remote.value = 789;
 
-    assert.equal(local.someOtherValue, 123, 'local value reset to original value');
+    assert.equal(
+      local.someOtherValue,
+      123,
+      'local value reset to original value'
+    );
     assert.equal(remote.value, 789, 'remote value is updated');
   });
 
@@ -52,7 +56,11 @@ module('Unit | Utils | @trackedReset', () => {
 
     remote.value = 789;
 
-    assert.equal(local.someOtherValue, 123, 'local value updates to original value');
+    assert.equal(
+      local.someOtherValue,
+      123,
+      'local value updates to original value'
+    );
     assert.equal(remote.value, 789, 'remote value is updated');
   });
 
@@ -82,8 +90,16 @@ module('Unit | Utils | @trackedReset', () => {
 
     remote.value = 789;
 
-    assert.deepEqual(local.someOtherValue, [], 'local value reset to original value');
-    assert.notEqual(local.someOtherValue, originalValue, 'initializer was rerun');
+    assert.deepEqual(
+      local.someOtherValue,
+      [],
+      'local value reset to original value'
+    );
+    assert.notEqual(
+      local.someOtherValue,
+      originalValue,
+      'initializer was rerun'
+    );
     assert.equal(remote.value, 789, 'remote value is updated');
   });
 
@@ -113,7 +129,11 @@ module('Unit | Utils | @trackedReset', () => {
 
     remote.value = 789;
 
-    assert.equal(local.someOtherValue, 123, 'local value reset to original value');
+    assert.equal(
+      local.someOtherValue,
+      123,
+      'local value reset to original value'
+    );
     assert.equal(remote.value, 789, 'remote value is updated');
   });
 
@@ -131,8 +151,9 @@ module('Unit | Utils | @trackedReset', () => {
         memo: 'remote.value',
         update(component, key, last) {
           return Math.max(this.remote.value, last);
-        }
-      }) someOtherValue = 123;
+        },
+      })
+      someOtherValue = 123;
     }
 
     let local = new Local();
@@ -146,7 +167,11 @@ module('Unit | Utils | @trackedReset', () => {
 
     remote.value = 789;
 
-    assert.equal(local.someOtherValue, 789, 'local value updated using the update function');
+    assert.equal(
+      local.someOtherValue,
+      789,
+      'local value updated using the update function'
+    );
     assert.equal(remote.value, 789, 'remote value is updated');
   });
 
@@ -167,8 +192,9 @@ module('Unit | Utils | @trackedReset', () => {
 
         update(component, key, last) {
           return Math.max(this.remote.value, last);
-        }
-      }) someOtherValue = 123;
+        },
+      })
+      someOtherValue = 123;
     }
 
     let local = new Local();
@@ -182,7 +208,11 @@ module('Unit | Utils | @trackedReset', () => {
 
     remote.value = 789;
 
-    assert.equal(local.someOtherValue, 789, 'local value updated using the update function');
+    assert.equal(
+      local.someOtherValue,
+      789,
+      'local value updated using the update function'
+    );
     assert.equal(remote.value, 789, 'remote value is updated');
   });
 

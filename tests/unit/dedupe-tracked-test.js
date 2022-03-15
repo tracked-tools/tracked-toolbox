@@ -24,12 +24,20 @@ module('Unit | Utils | @dedupeTracked', () => {
     person._name = 'Tomster';
 
     assert.equal(person.name, 'Tomster', 'name is correct');
-    assert.equal(count, 1, 'getter is not called again after updating to the same value');
+    assert.equal(
+      count,
+      1,
+      'getter is not called again after updating to the same value'
+    );
 
     person._name = 'Zoey';
 
     assert.equal(person.name, 'Zoey', 'name is correct');
-    assert.equal(count, 2, 'getter is called again after updating to a different value');
+    assert.equal(
+      count,
+      2,
+      'getter is called again after updating to a different value'
+    );
   });
 
   test('it works without an initializer', (assert) => {
@@ -54,12 +62,20 @@ module('Unit | Utils | @dedupeTracked', () => {
     person._name = undefined;
 
     assert.equal(person.name, undefined, 'name is still undefined');
-    assert.equal(count, 1, 'getter is not called again after updating to the same value');
+    assert.equal(
+      count,
+      1,
+      'getter is not called again after updating to the same value'
+    );
 
     person._name = 'Zoey';
 
     assert.equal(person.name, 'Zoey', 'name is correct');
-    assert.equal(count, 2, 'getter is called again after updating to a different value');
+    assert.equal(
+      count,
+      2,
+      'getter is called again after updating to a different value'
+    );
   });
 
   test('it requires no parameters or exactly one comparator', (assert) => {
@@ -107,11 +123,19 @@ module('Unit | Utils | @dedupeTracked', () => {
     person._name = 'bar';
 
     assert.equal(person.name, 'foo', 'name is correct');
-    assert.equal(count, 1, 'getter is not called again after updating to the "same" value');
+    assert.equal(
+      count,
+      1,
+      'getter is not called again after updating to the "same" value'
+    );
 
     person._name = 'Zoey';
 
     assert.equal(person.name, 'Zoey', 'name is correct');
-    assert.equal(count, 2, 'getter is called again after updating to a different value');
+    assert.equal(
+      count,
+      2,
+      'getter is called again after updating to a different value'
+    );
   });
 });
