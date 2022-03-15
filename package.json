@@ -72,7 +72,7 @@
     "webpack": "^5.60.0"
   },
   "engines": {
-    "node": "8.* || >= 10.*"
+    "node": "12.* || 14.* || >= 16"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
