@@ -1,0 +1,46 @@
+{
+  "name": "tracked-toolbox",
+  "version": "1.2.3",
+  "description": "Helpful autotracking utilities",
+  "keywords": [
+    "ember-addon"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tracked-tools/tracked-toolbox.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "lint": "eslint . --cache",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "ember-cache-primitive-polyfill": "^1.0.0",
+    "ember-cli-babel": "^7.26.11"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-ember": "^10.5.9",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.0"
+  },
+  "engines": {
+    "node": "12.* || 14.* || >= 16"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "volta": {
+    "extends": "../package.json"
+  }
+}
