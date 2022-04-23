@@ -1,7 +1,21 @@
-import { assert, deprecate } from '@ember/debug';
+import { assert } from '@ember/debug';
 import { get } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { createCache, getValue } from '@glimmer/tracking/primitives/cache';
+import {
+  macroCondition,
+  dependencySatisfies,
+  importSync,
+} from '@embroider/macros';
+
+let deprecate;
+
+if (macroCondition(dependencySatisfies('ember-source', '^3.28.0 || ^4.0.0'))) {
+  deprecate = importSync('@ember/debug').deprecate;
+} else {
+  // eslint-disable-next-line no-undef
+  deprecate = Ember.deprecate;
+}
 
 class Meta {
   prevRemote;
