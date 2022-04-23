@@ -11,26 +11,42 @@
   },
   "license": "MIT",
   "author": "",
+  "exports": {
+    ".": "./dist/index.js",
+    "./addon-main.js": "./addon-main.js"
+  },
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
+  "files": [
+    "addon-main.js",
+    "dist"
+  ],
   "scripts": {
+    "build": "rollup --config",
     "lint": "eslint . --cache",
     "lint:fix": "eslint . --fix",
-    "prepublishOnly": "cp ../README.md ../LICENSE.md ."
+    "prepublishOnly": "cp ../README.md ../LICENSE.md . && rollup --config",
+    "start": "rollup --config --watch"
   },
   "dependencies": {
-    "ember-cache-primitive-polyfill": "^1.0.0",
-    "ember-cli-babel": "^7.26.11"
+    "@embroider/addon-shim": "^1.6.0",
+    "ember-cache-primitive-polyfill": "^1.0.0"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
+    "@babel/core": "^7.17.9",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-proposal-decorators": "^7.17.9",
+    "@embroider/addon-dev": "^1.6.0",
+    "@rollup/plugin-babel": "^5.3.1",
+    "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-ember": "^10.5.9",
+    "eslint-plugin-ember": "^10.6.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.6.0"
+    "prettier": "^2.6.2",
+    "rollup": "^2.70.2"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
@@ -40,6 +56,11 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "ember-addon": {
+    "main": "addon-main.js",
+    "type": "addon",
+    "version": 2
   },
   "volta": {
     "extends": "../package.json"

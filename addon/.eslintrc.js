@@ -2,7 +2,7 @@
 
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
@@ -26,7 +26,7 @@ module.exports = {
       files: [
         './.eslintrc.js',
         './.prettierrc.js',
-        './index.js',
+        './addon-main.js',
         './config/**/*.js',
       ],
       parserOptions: {
