@@ -1,4 +1,4 @@
-# Release
+# Release Process
 
 Releases are mostly automated using
 [release-it](https://github.com/release-it/release-it/) and
@@ -30,38 +30,33 @@ When reviewing merged PR's the labels to be used are:
 
 Once the prep work is completed, the actual release is straight forward:
 
-* First ensure that you have `release-it` installed globally, generally done by
-  using one of the following commands:
+* First, ensure that you have installed your projects dependencies:
 
-```
-# using https://volta.sh
-volta install release-it
+  ```sh
+  yarn install
+  ```
 
-# using Yarn
-yarn global add release-it
+* Second, ensure that you have obtained a
+  [GitHub personal access token][generate-token] with the `repo` scope (no
+  other permissions are needed). Make sure the token is available as the
+  `GITHUB_AUTH` environment variable.
 
-# using npm
-npm install --global release-it
-```
+  For instance:
 
-* Second, ensure that you have installed your projects dependencies:
+  ```bash
+  export GITHUB_AUTH=abc123def456
+  ```
 
-```
-yarn install
-```
+[generate-token]: https://github.com/settings/tokens/new?scopes=repo&description=GITHUB_AUTH+env+variable
 
-* And last (but not least 😁) do your release. It requires a
-  [GitHub personal access token](https://github.com/settings/tokens) as
-  `$GITHUB_AUTH` environment variable. Only "repo" access is needed; no "admin"
-  or other scopes are required.
+* And last (but not least 😁) do your release.
 
-```
-export GITHUB_AUTH="f941e0..."
-release-it
-```
+  ```sh
+  yarn release
+  ```
 
 [release-it](https://github.com/release-it/release-it/) manages the actual
-release process. It will prompt you to to choose the version number after which
+release process. It will prompt you to choose the version number after which
 you will have the chance to hand tweak the changelog to be used (for the
 `CHANGELOG.md` and GitHub release), then `release-it` continues on to tagging,
 pushing the tag and commits, etc.
