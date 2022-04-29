@@ -27,7 +27,7 @@
     "build": "rollup --config",
     "lint": "eslint . --cache",
     "lint:fix": "eslint . --fix",
-    "prepublishOnly": "cp ../README.md ../LICENSE.md . && rollup --config",
+    "prepublishOnly": "rollup --config",
     "start": "rollup --config --watch"
   },
   "dependencies": {
