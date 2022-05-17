@@ -2,20 +2,6 @@ import { assert } from '@ember/debug';
 import { get } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { createCache, getValue } from '@glimmer/tracking/primitives/cache';
-import {
-  macroCondition,
-  dependencySatisfies,
-  importSync,
-} from '@embroider/macros';
-
-let deprecate;
-
-if (macroCondition(dependencySatisfies('ember-source', '^3.28.0 || ^4.0.0'))) {
-  deprecate = importSync('@ember/debug').deprecate;
-} else {
-  // eslint-disable-next-line no-undef
-  deprecate = Ember.deprecate;
-}
 
 class Meta {
   prevRemote;
@@ -41,29 +27,16 @@ function getOrCreateMeta(instance, metas, initializer) {
 
 export function localCopy(memo, initializer) {
   assert(
-    `@localCopy() must be given a memo path or memo function as its first argument, received \`${String(
+    `@localCopy() must be given a memo path as its first argument, received \`${String(
       memo
     )}\``,
-    typeof memo === 'string' || typeof memo === 'function'
-  );
-  deprecate(
-    'Using a memoization function with @localCopy has been deprecated. Consider using @trackedReset instead.',
-    typeof memo !== 'function',
-    {
-      id: 'local-copy-memo-fn',
-      for: 'tracked-toolbox',
-      since: '1.2.3',
-      until: '2.0.0',
-    }
+    typeof memo === 'string'
   );
 
   let metas = new WeakMap();
 
-  return (_prototype, key) => {
-    let memoFn =
-      typeof memo === 'function'
-        ? (obj, last) => memo.call(obj, obj, key, last)
-        : (obj) => get(obj, memo);
+  return (/* prototype, key, desc */) => {
+    let memoFn = (obj) => get(obj, memo);
 
     return {
       get() {
