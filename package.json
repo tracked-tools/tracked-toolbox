@@ -5,6 +5,10 @@
     "addon",
     "test-app"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tracked-tools/tracked-toolbox.git"
+  },
   "scripts": {
     "prepare": "cd addon && yarn build",
     "release": "release-it",
