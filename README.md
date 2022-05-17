@@ -1,27 +1,23 @@
-tracked-toolbox
-==============================================================================
+# tracked-toolbox
 
 Helpful utilities for writing applications with Ember Octane's revision
 tracking!
 
 
-Compatibility
-------------------------------------------------------------------------------
+## Compatibility
 
 * Ember.js v3.20 or above
 * Ember CLI v3.20 or above
 * Node.js v14 or above
 
 
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ```
 ember install tracked-toolbox
 ```
 
-Usage
-------------------------------------------------------------------------------
+## Usage
 
 ### Minimizing updates
 
@@ -175,13 +171,11 @@ if you do not reset the internal state of the form component, it could end up
 preserving the previous profile's form data, since Ember will reuse the
 component instance and simply update its arguments.
 
-Contributing
-------------------------------------------------------------------------------
+## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 
 
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).
