@@ -1,3 +1,36 @@
+
+## v2.0.0 (2022-05-17)
+
+#### :boom: Breaking Change
+* [#68](https://github.com/tracked-tools/tracked-toolbox/pull/68) Remove deprecated localCopy memo function variant ([@chriskrycho](https://github.com/chriskrycho))
+* [#67](https://github.com/tracked-tools/tracked-toolbox/pull/67) Drop support for Node 12 from `engines` ([@SergeAstapov](https://github.com/SergeAstapov))
+* [#66](https://github.com/tracked-tools/tracked-toolbox/pull/66) Drop support for Node 12 ([@chriskrycho](https://github.com/chriskrycho))
+* [#64](https://github.com/tracked-tools/tracked-toolbox/pull/64) Convert to v2 addon ([@SergeAstapov](https://github.com/SergeAstapov))
+* [#44](https://github.com/tracked-tools/tracked-toolbox/pull/44) Drop Node.js 8, 10, 11, 13, 15 support ([@SergeAstapov](https://github.com/SergeAstapov))
+
+#### :rocket: Enhancement
+* [#57](https://github.com/tracked-tools/tracked-toolbox/pull/57) Move `ember-cli-htmlbars` to `devDependencies` ([@SergeAstapov](https://github.com/SergeAstapov))
+* [#53](https://github.com/tracked-tools/tracked-toolbox/pull/53) Add ability to pass a custom comparator to `dedupe-tracked` ([@boris-petrov](https://github.com/boris-petrov))
+* [#48](https://github.com/tracked-tools/tracked-toolbox/pull/48) Support Ember 4 and make CI pass ([@SergeAstapov](https://github.com/SergeAstapov))
+
+#### :bug: Bug Fix
+* [#47](https://github.com/tracked-tools/tracked-toolbox/pull/47) Fix missing `since` option for `local-copy-memo-fn` deprecation ([@SergeAstapov](https://github.com/SergeAstapov))
+
+#### :memo: Documentation
+* [#51](https://github.com/tracked-tools/tracked-toolbox/pull/51) Update repository url in package.json ([@SergeAstapov](https://github.com/SergeAstapov))
+
+#### :house: Internal
+* [#71](https://github.com/tracked-tools/tracked-toolbox/pull/71) Add `repository` to `package.json` ([@chriskrycho](https://github.com/chriskrycho))
+* [#59](https://github.com/tracked-tools/tracked-toolbox/pull/59) Run ember-cli-update to v4.2 to align with the latest addon blueprint ([@SergeAstapov](https://github.com/SergeAstapov))
+* [#46](https://github.com/tracked-tools/tracked-toolbox/pull/46) Add prettier per latest addon blueprint ([@SergeAstapov](https://github.com/SergeAstapov))
+* [#50](https://github.com/tracked-tools/tracked-toolbox/pull/50) Run ember-cli-update to v3.28.3 to align with the latest addon blueprint ([@SergeAstapov](https://github.com/SergeAstapov))
+* [#43](https://github.com/tracked-tools/tracked-toolbox/pull/43) Update npmignore file ([@SergeAstapov](https://github.com/SergeAstapov))
+
+#### Committers: 3
+- Boris Petrov ([@boris-petrov](https://github.com/boris-petrov))
+- Chris Krycho ([@chriskrycho](https://github.com/chriskrycho))
+- Sergey Astapov ([@SergeAstapov](https://github.com/SergeAstapov))
+
 ## v1.2.3 (2021-04-01)
 
 #### :bug: Bug Fix
