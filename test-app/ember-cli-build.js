@@ -13,6 +13,16 @@ module.exports = function (defaults) {
 
   const { maybeEmbroider } = require('@embroider/test-setup');
   return maybeEmbroider(app, {
+    packageRules: [
+      {
+        package: 'test-app',
+        components: {
+          '{{provided-component}}': {
+            safeToIgnore: true,
+          },
+        },
+      },
+    ],
     skipBabel: [
       {
         package: 'qunit',
