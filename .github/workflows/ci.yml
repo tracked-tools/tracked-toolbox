@@ -7,6 +7,7 @@ on:
     branches:
       - main
       - master
+      - v1.x
   schedule:
     # Check on floating deps weekly
     - cron: '0 3 * * 0' # every Sunday at 3am
