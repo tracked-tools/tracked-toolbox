@@ -1,3 +1,16 @@
+## v1.3.0 (2022-06-13)
+
+#### :rocket: Enhancement
+* [#75](https://github.com/tracked-tools/tracked-toolbox/pull/75) backport: Move `ember-cli-htmlbars` to `devDependencies` ([@chriskrycho](https://github.com/chriskrycho))
+* [#74](https://github.com/tracked-tools/tracked-toolbox/pull/74) backport: Add ability to pass a custom comparator to `dedupe-tracked` ([@chriskrycho](https://github.com/chriskrycho))
+* [#73](https://github.com/tracked-tools/tracked-toolbox/pull/73) Backport: support Ember v4 ([@chriskrycho](https://github.com/chriskrycho))
+
+#### :house: Internal
+* [#72](https://github.com/tracked-tools/tracked-toolbox/pull/72) Add v1.x branch to CI config ([@chriskrycho](https://github.com/chriskrycho))
+
+#### Committers: 1
+- Chris Krycho ([@chriskrycho](https://github.com/chriskrycho))
+
 ## v1.2.3 (2021-04-01)
 
 #### :bug: Bug Fix
