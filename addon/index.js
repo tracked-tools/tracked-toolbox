@@ -33,6 +33,7 @@ export function localCopy(memo, initializer) {
   deprecate('Using a memoization function with @localCopy has been deprecated. Consider using @trackedReset instead.', typeof memo !== 'function', {
     id: 'local-copy-memo-fn',
     for: 'tracked-toolbox',
+    since: '1.2.3',
     until: '2.0.0',
   });
 

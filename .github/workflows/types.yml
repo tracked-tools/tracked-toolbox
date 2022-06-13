@@ -17,11 +17,14 @@ jobs:
     name: Type Checking
     runs-on: ubuntu-latest
 
-    # steps:
-    #   - uses: actions/checkout@v2
-    #   - uses: volta-cli/action@v1
-
-    #   - run: yarn install --frozen-lockfile
-
-    #   - name: Type Checking
-    #     run: yarn tsc --build
+    steps:
+      - uses: actions/checkout@v2
+#      - uses: actions/setup-node@v2
+#        with:
+#          node-version: 12.x
+#          cache: yarn
+#      - name: Install Dependencies
+#        run: yarn install --no-lockfile
+#
+#      - name: Type Checking
+#        run: yarn tsc --build
