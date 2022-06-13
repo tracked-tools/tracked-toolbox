@@ -152,28 +152,45 @@ export function cached(target, key, value) {
   };
 }
 
-export function dedupeTracked(target, key, desc) {
-  let { initializer } = desc;
-  let { get, set } = tracked(target, key, desc);
+export function dedupeTracked() {
+  let comparator;
+  const descriptor = function (target, key, desc) {
+    let { initializer } = desc;
+    let { get, set } = tracked(target, key, desc);
 
-  let values = new WeakMap();
+    let values = new WeakMap();
 
-  return {
-    get() {
-      if (!values.has(this)) {
-        let value = initializer?.call(this);
-        values.set(this, value);
-        set.call(this, value);
-      }
+    return {
+      get() {
+        if (!values.has(this)) {
+          let value = initializer?.call(this);
+          values.set(this, value);
+          set.call(this, value);
+        }
 
-      return get.call(this);
-    },
+        return get.call(this);
+      },
 
-    set(value) {
-      if (!values.has(this) || value !== values.get(this)) {
-        values.set(this, value);
-        set.call(this, value);
-      }
-    },
+      set(value) {
+        if (!values.has(this) || !comparator(value, values.get(this))) {
+          values.set(this, value);
+          set.call(this, value);
+        }
+      },
+    };
   };
+  if (arguments.length === 3) {
+    comparator = (a, b) => a === b;
+    return descriptor(...arguments);
+  }
+  if (arguments.length === 1 && typeof arguments[0] === 'function') {
+    comparator = arguments[0];
+    return descriptor;
+  }
+  assert(
+    `@dedupeTracked() can either be invoked without arguments or with one comparator function, received \`${String(
+      arguments
+    )}\``,
+    false
+  );
 }
