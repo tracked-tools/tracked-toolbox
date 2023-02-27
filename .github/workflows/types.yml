@@ -32,4 +32,4 @@ jobs:
 #
 #      - name: Type Checking
 #        run: yarn tsc --build
-#        working-directory: addon
+#        working-directory: tracked-toolbox

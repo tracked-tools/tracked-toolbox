@@ -8,8 +8,8 @@ tmp/
 node_modules
 
 # misc
-/addon/README.md
-/addon/LICENSE.md
+/tracked-toolbox/README.md
+/tracked-toolbox/LICENSE.md
 .env*
 .pnp*
 .sass-cache

@@ -36,7 +36,7 @@ jobs:
 
       - name: Lint Addon
         run: yarn lint
-        working-directory: addon
+        working-directory: tracked-toolbox
 
       - name: Lint Test App
         run: yarn lint

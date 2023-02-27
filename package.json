@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "private": true,
   "workspaces": [
-    "addon",
+    "tracked-toolbox",
     "test-app"
   ],
   "repository": {
@@ -10,7 +10,7 @@
     "url": "git@github.com:tracked-tools/tracked-toolbox.git"
   },
   "scripts": {
-    "prepare": "cd addon && yarn build",
+    "prepare": "cd tracked-toolbox && yarn build",
     "release": "release-it",
     "test": "cd test-app && yarn test"
   },
@@ -24,7 +24,7 @@
   },
   "release-it": {
     "hooks": {
-      "before:init": "cp README.md LICENSE.md addon/"
+      "before:init": "cp README.md LICENSE.md tracked-toolbox/"
     },
     "plugins": {
       "@release-it-plugins/lerna-changelog": {
