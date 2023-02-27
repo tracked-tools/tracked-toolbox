@@ -33,7 +33,7 @@
       },
       "@release-it-plugins/workspaces": {
         "workspaces": [
-          "addon"
+          "tracked-toolbox"
         ],
         "additionalManifests": {
           "dependencyUpdates": [
