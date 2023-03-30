@@ -12,6 +12,7 @@ module.exports = async function () {
         npm: {
           devDependencies: {
             'ember-source': '~3.20.5',
+            'ember-qunit': '^5.1.5',
           },
         },
       },
@@ -20,6 +21,7 @@ module.exports = async function () {
         npm: {
           devDependencies: {
             'ember-source': '~3.24.3',
+            'ember-qunit': '^5.1.5',
           },
         },
       },
