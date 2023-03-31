@@ -31,7 +31,7 @@
     "start": "rollup --config --watch"
   },
   "dependencies": {
-    "@embroider/addon-shim": "^1.6.0",
+    "@embroider/addon-shim": "^1.8.4",
     "ember-cache-primitive-polyfill": "^1.0.0"
   },
   "devDependencies": {
