@@ -1792,10 +1792,10 @@
     "@pnpm/network.ca-file" "^1.0.1"
     config-chain "^1.1.11"
 
-"@release-it-plugins/lerna-changelog@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@release-it-plugins/lerna-changelog/-/lerna-changelog-5.0.0.tgz#cbbbc47fd40ef212f2d7c0e24867d3fcea4cd232"
-  integrity sha512-nMhAUptKSfIsiY0c//HuBcd2VT7D/IoxAQNwRgPx+jf3FM7HA5KD4KSl3oLoz4uA4GjvypWQP4ODX8UbWjmUZA==
+"@release-it-plugins/lerna-changelog@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@release-it-plugins/lerna-changelog/-/lerna-changelog-6.0.0.tgz#f6c163a2b929c67c6878ae5a034dab08e23c17d9"
+  integrity sha512-/1xNLriHKKTdM+/LSQIng5V25gipw0brAXtWVQcOBR63NmW/Ftnd2IJpnM5WzFkOCcL9hoqc8rcIMMv1EOcaIg==
   dependencies:
     execa "^5.1.1"
     lerna-changelog "^2.2.0"
@@ -10666,7 +10666,7 @@ resolve-package-path@^3.1.0:
     path-root "^0.1.1"
     resolve "^1.17.0"
 
-resolve-package-path@^4.0.0, resolve-package-path@^4.0.1, resolve-package-path@^4.0.3:
+resolve-package-path@^4.0.1, resolve-package-path@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/resolve-package-path/-/resolve-package-path-4.0.3.tgz#31dab6897236ea6613c72b83658d88898a9040aa"
   integrity sha512-SRpNAPW4kewOaNUt8VPqhJ0UMxawMwzJD8V7m1cJfdSTK9ieZwS6K7Dabsm4bmLFM96Z5Y/UznrpG5kt1im8yA==
@@ -12379,15 +12379,7 @@ validate-peer-dependencies@^1.0.0, validate-peer-dependencies@^1.1.0:
     resolve-package-path "^3.1.0"
     semver "^7.3.2"
 
-validate-peer-dependencies@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/validate-peer-dependencies/-/validate-peer-dependencies-2.0.0.tgz#a1bd33472517932d7c859e6c03eb849849207794"
-  integrity sha512-i2I3vl+9yk+gI0YCruDa29mzaNykLbSbUVVNQY/mBTLLYjQxVbklqBdTdH2iTpxV9AHH1u0dKlk/zl1sjHTfug==
-  dependencies:
-    resolve-package-path "^4.0.0"
-    semver "^7.3.2"
-
-validate-peer-dependencies@^2.2.0:
+validate-peer-dependencies@^2.0.0, validate-peer-dependencies@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/validate-peer-dependencies/-/validate-peer-dependencies-2.2.0.tgz#47b8ff008f66a66fc5d8699123844522c1d874f4"
   integrity sha512-8X1OWlERjiUY6P6tdeU9E0EwO8RA3bahoOVG7ulOZT5MqgNDUO/BQoVjYiHPcNe+v8glsboZRIw9iToMAA2zAA==
