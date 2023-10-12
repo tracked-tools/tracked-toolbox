@@ -68,7 +68,7 @@
     "qunit-dom": "^2.0.0",
     "tracked-built-ins": "^3.3.0",
     "tracked-toolbox": "2.0.0",
-    "webpack": "^5.80.0"
+    "webpack": "^5.88.2"
   },
   "engines": {
     "node": "14.* || 16.* || >= 18"
