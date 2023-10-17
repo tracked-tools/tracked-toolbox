@@ -17,7 +17,7 @@
   "devDependencies": {
     "@release-it-plugins/lerna-changelog": "^6.0.0",
     "@release-it-plugins/workspaces": "^4.0.0",
-    "release-it": "^15.11.0"
+    "release-it": "^16.2.1"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
