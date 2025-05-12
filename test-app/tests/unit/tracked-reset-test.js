@@ -20,7 +20,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       123,
-      'defaults to the remote value'
+      'defaults to the remote value',
     );
 
     local.someOtherValue = 456;
@@ -28,7 +28,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       456,
-      'local value updates correctly'
+      'local value updates correctly',
     );
     assert.strictEqual(remote.value, 123, 'remote value does not update');
 
@@ -37,7 +37,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       123,
-      'local value reset to original value'
+      'local value reset to original value',
     );
     assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
@@ -58,7 +58,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       123,
-      'defaults to the remote value'
+      'defaults to the remote value',
     );
 
     local.someOtherValue = 456;
@@ -66,7 +66,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       456,
-      'local value updates correctly'
+      'local value updates correctly',
     );
     assert.strictEqual(remote.value, 123, 'remote value does not update');
 
@@ -75,7 +75,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       123,
-      'local value updates to original value'
+      'local value updates to original value',
     );
     assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
@@ -104,7 +104,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       456,
-      'local value updates correctly'
+      'local value updates correctly',
     );
     assert.strictEqual(remote.value, 123, 'remote value does not update');
 
@@ -113,12 +113,12 @@ module('Unit | Utils | @trackedReset', () => {
     assert.deepEqual(
       local.someOtherValue,
       [],
-      'local value reset to original value'
+      'local value reset to original value',
     );
     assert.notEqual(
       local.someOtherValue,
       originalValue,
-      'initializer was rerun'
+      'initializer was rerun',
     );
     assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
@@ -143,7 +143,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       123,
-      'defaults to the remote value'
+      'defaults to the remote value',
     );
 
     local.someOtherValue = 456;
@@ -151,7 +151,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       456,
-      'local value updates correctly'
+      'local value updates correctly',
     );
     assert.strictEqual(remote.value, 123, 'remote value does not update');
 
@@ -160,7 +160,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       123,
-      'local value reset to original value'
+      'local value reset to original value',
     );
     assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
@@ -189,7 +189,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       123,
-      'defaults to the remote value'
+      'defaults to the remote value',
     );
 
     local.someOtherValue = 456;
@@ -197,7 +197,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       456,
-      'local value updates correctly'
+      'local value updates correctly',
     );
     assert.strictEqual(remote.value, 123, 'remote value does not update');
 
@@ -206,7 +206,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       789,
-      'local value updated using the update function'
+      'local value updated using the update function',
     );
     assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
@@ -238,7 +238,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       123,
-      'defaults to the remote value'
+      'defaults to the remote value',
     );
 
     local.someOtherValue = 456;
@@ -246,7 +246,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       456,
-      'local value updates correctly'
+      'local value updates correctly',
     );
     assert.strictEqual(remote.value, 123, 'remote value does not update');
 
@@ -255,7 +255,7 @@ module('Unit | Utils | @trackedReset', () => {
     assert.strictEqual(
       local.someOtherValue,
       789,
-      'local value updated using the update function'
+      'local value updated using the update function',
     );
     assert.strictEqual(remote.value, 789, 'remote value is updated');
   });

@@ -19,7 +19,7 @@ module('Integration | Utils | @localCopy', function (hooks) {
       .hasValue('default', 'remote value is passed through correctly');
 
     this.set('onInput', (value) =>
-      assert.strictEqual(value, 'hello!', 'updated value sent')
+      assert.strictEqual(value, 'hello!', 'updated value sent'),
     );
 
     await fillIn('input', 'hello!');
@@ -28,7 +28,7 @@ module('Integration | Utils | @localCopy', function (hooks) {
     assert.strictEqual(
       this.text,
       'default',
-      'remote value is not updated correctly'
+      'remote value is not updated correctly',
     );
 
     this.set('text', 'world!');
@@ -37,7 +37,7 @@ module('Integration | Utils | @localCopy', function (hooks) {
       .dom('input')
       .hasValue(
         'world!',
-        'local value is updated correctly when remote value is updated'
+        'local value is updated correctly when remote value is updated',
       );
   });
 });

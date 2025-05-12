@@ -1,62 +1,28 @@
 {
-  "version": "2.0.0",
   "private": true,
-  "workspaces": [
-    "tracked-toolbox",
-    "test-app"
-  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:tracked-tools/tracked-toolbox.git"
   },
   "scripts": {
-    "prepare": "cd tracked-toolbox && yarn build",
-    "release": "release-it",
-    "test": "cd test-app && yarn test"
+    "build": "pnpm --filter tracked-toolbox build",
+    "lint": "pnpm --filter '*' lint",
+    "lint:fix": "pnpm --filter '*' lint:fix",
+    "prepare": "pnpm build",
+    "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefixColors auto",
+    "start:addon": "pnpm --filter tracked-toolbox start --no-watch.clearScreen",
+    "start:test-app": "pnpm --filter test-app start",
+    "test": "pnpm --filter '*' test",
+    "test:ember": "pnpm --filter '*' test:ember"
   },
   "devDependencies": {
-    "@release-it-plugins/lerna-changelog": "^6.0.0",
-    "@release-it-plugins/workspaces": "^4.0.0",
-    "release-it": "^16.2.1"
+    "concurrently": "^9.1.2",
+    "prettier": "^3.5.3",
+    "prettier-plugin-ember-template-tag": "^2.0.5"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
-  "release-it": {
-    "hooks": {
-      "before:init": "cp README.md LICENSE.md tracked-toolbox/"
-    },
-    "plugins": {
-      "@release-it-plugins/lerna-changelog": {
-        "infile": "CHANGELOG.md",
-        "launchEditor": true
-      },
-      "@release-it-plugins/workspaces": {
-        "workspaces": [
-          "tracked-toolbox"
-        ],
-        "additionalManifests": {
-          "dependencyUpdates": [
-            "test-app/package.json"
-          ],
-          "versionUpdates": [
-            "package.json",
-            "test-app/package.json"
-          ]
-        }
-      }
-    },
-    "git": {
-      "tagName": "v${version}"
-    },
-    "github": {
-      "release": true,
-      "tokenRef": "GITHUB_AUTH"
-    },
-    "npm": false
-  },
+  "packageManager": "pnpm@10.0.0",
   "volta": {
-    "node": "16.19.1",
-    "yarn": "1.22.19"
+    "node": "20.19.1",
+    "pnpm": "10.10.0"
   }
 }
