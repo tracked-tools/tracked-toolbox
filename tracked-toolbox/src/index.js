@@ -28,9 +28,9 @@ function getOrCreateMeta(instance, metas, initializer) {
 export function localCopy(memo, initializer) {
   assert(
     `@localCopy() must be given a memo path as its first argument, received \`${String(
-      memo
+      memo,
     )}\``,
-    typeof memo === 'string'
+    typeof memo === 'string',
   );
 
   let metas = new WeakMap();
@@ -72,13 +72,13 @@ export function localCopy(memo, initializer) {
 export function trackedReset(memoOrConfig) {
   assert(
     `@trackedReset() must be given a memo path, a memo function, or config object with a memo path or function as its first argument, received \`${String(
-      memoOrConfig
+      memoOrConfig,
     )}\``,
     typeof memoOrConfig === 'string' ||
       typeof memoOrConfig === 'function' ||
       (typeof memoOrConfig === 'object' &&
         memoOrConfig !== null &&
-        memoOrConfig.memo !== undefined)
+        memoOrConfig.memo !== undefined),
   );
 
   let metas = new WeakMap();
@@ -182,8 +182,8 @@ export function dedupeTracked() {
   }
   assert(
     `@dedupeTracked() can either be invoked without arguments or with one comparator function, received \`${String(
-      arguments
+      arguments,
     )}\``,
-    false
+    false,
   );
 }

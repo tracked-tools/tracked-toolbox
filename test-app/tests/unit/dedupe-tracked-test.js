@@ -27,7 +27,7 @@ module('Unit | Utils | @dedupeTracked', () => {
     assert.strictEqual(
       count,
       1,
-      'getter is not called again after updating to the same value'
+      'getter is not called again after updating to the same value',
     );
 
     person._name = 'Zoey';
@@ -36,7 +36,7 @@ module('Unit | Utils | @dedupeTracked', () => {
     assert.strictEqual(
       count,
       2,
-      'getter is called again after updating to a different value'
+      'getter is called again after updating to a different value',
     );
   });
 
@@ -59,7 +59,7 @@ module('Unit | Utils | @dedupeTracked', () => {
     assert.strictEqual(
       person.name,
       undefined,
-      'name should start as undefined'
+      'name should start as undefined',
     );
     assert.strictEqual(count, 1, 'getter is called the first time');
 
@@ -69,7 +69,7 @@ module('Unit | Utils | @dedupeTracked', () => {
     assert.strictEqual(
       count,
       1,
-      'getter is not called again after updating to the same value'
+      'getter is not called again after updating to the same value',
     );
 
     person._name = 'Zoey';
@@ -78,7 +78,7 @@ module('Unit | Utils | @dedupeTracked', () => {
     assert.strictEqual(
       count,
       2,
-      'getter is called again after updating to a different value'
+      'getter is called again after updating to a different value',
     );
   });
 
@@ -130,7 +130,7 @@ module('Unit | Utils | @dedupeTracked', () => {
     assert.strictEqual(
       count,
       1,
-      'getter is not called again after updating to the "same" value'
+      'getter is not called again after updating to the "same" value',
     );
 
     person._name = 'Zoey';
@@ -139,7 +139,7 @@ module('Unit | Utils | @dedupeTracked', () => {
     assert.strictEqual(
       count,
       2,
-      'getter is called again after updating to a different value'
+      'getter is called again after updating to a different value',
     );
   });
 });

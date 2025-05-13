@@ -29,7 +29,7 @@ module('Unit | Utils | @localCopy', () => {
     assert.strictEqual(
       local.value,
       789,
-      'local value updates to new remote value'
+      'local value updates to new remote value',
     );
     assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
@@ -72,7 +72,7 @@ module('Unit | Utils | @localCopy', () => {
     assert.strictEqual(
       local.value,
       789,
-      'local value updates to new remote value'
+      'local value updates to new remote value',
     );
     assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
@@ -105,7 +105,7 @@ module('Unit | Utils | @localCopy', () => {
     assert.strictEqual(
       local.value,
       789,
-      'local value updates to new remote value'
+      'local value updates to new remote value',
     );
     assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
@@ -136,7 +136,7 @@ module('Unit | Utils | @localCopy', () => {
     assert.strictEqual(
       local.value,
       789,
-      'local value updates to new remote value'
+      'local value updates to new remote value',
     );
     assert.strictEqual(remote.value, 789, 'remote value is updated');
   });

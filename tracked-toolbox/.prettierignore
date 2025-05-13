@@ -1,12 +1,9 @@
+# unconventional js
+/blueprints/*/files/
+
 # compiled output
 /dist/
-/tmp/
-
-# dependencies
-/node_modules/
+/declarations/
 
 # misc
 /coverage/
-!.*
-.eslintcache
-.lint-todo/

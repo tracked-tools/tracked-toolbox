@@ -7,28 +7,30 @@ This repo is divided into multiple packages using Yarn workspaces:
 
 ## Installation
 
-* `git clone https://github.com/tracked-tools/tracked-toolbox.git`
-* `cd tracked-toolbox`
-* `yarn install`
+- `git clone https://github.com/tracked-tools/tracked-toolbox.git`
+- `cd tracked-toolbox`
+- `pnpm install`
 
 ## Linting
 
-* `yarn lint`
-* `yarn lint:fix`
+- `pnpm lint`
+- `pnpm lint:fix`
+
+## Building the addon
+
+- `cd tracked-toolbox`
+- `pnpm build`
 
 ## Running tests
 
-* `cd tracked-toolbox && yarn start` – Builds the addon in "watch mode" so changes picked up by test app.
-* `cd test-app && ember test` – Runs the test suite on the current Ember version
-* `cd test-app && ember test --server` – Runs the test suite in "watch mode"
-* `cd test-app && ember try:each` – Runs the test suite against multiple Ember versions
+- `cd test-app`
+- `pnpm test` – Runs the test suite on the current Ember version
+- `pnpm test:watch` – Runs the test suite in "watch mode"
 
-During development, if you'd like test app to pick up changes in the addon, make sure to run both
-`cd tracked-toolbox && yarn start` and `cd test-app && ember test --server` in different terminals.
+## Running the test application
 
-## Running the test-app application
-
-* `ember serve`
-* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
+- `cd test-app`
+- `pnpm start`
+- Visit the test application at [http://localhost:4200](http://localhost:4200).
 
 For more information on using ember-cli, visit [https://cli.emberjs.com/release/](https://cli.emberjs.com/release/).
