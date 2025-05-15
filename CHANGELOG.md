@@ -1,5 +1,31 @@
 # Changelog
 
+## Release (2025-05-15)
+
+* tracked-toolbox 2.0.1 (patch)
+
+#### :bug: Bug Fix
+* `tracked-toolbox`
+  * [#211](https://github.com/tracked-tools/tracked-toolbox/pull/211) Remove unneeded peers ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+* Other
+  * [#88](https://github.com/tracked-tools/tracked-toolbox/pull/88) Remove engines from addon package.json ([@SergeAstapov](https://github.com/SergeAstapov))
+
+#### :house: Internal
+* Other
+  * [#213](https://github.com/tracked-tools/tracked-toolbox/pull/213) Setup release-plan ([@SergeAstapov](https://github.com/SergeAstapov))
+  * [#100](https://github.com/tracked-tools/tracked-toolbox/pull/100) run `npx ember-cli-update --to=4.8.0` in test-app ([@SergeAstapov](https://github.com/SergeAstapov))
+  * [#94](https://github.com/tracked-tools/tracked-toolbox/pull/94) Add dependabot.yml config file ([@SergeAstapov](https://github.com/SergeAstapov))
+  * [#89](https://github.com/tracked-tools/tracked-toolbox/pull/89) Add 4.4 and 4.8 LTS ember-try scenarios ([@SergeAstapov](https://github.com/SergeAstapov))
+  * [#82](https://github.com/tracked-tools/tracked-toolbox/pull/82) bump release-it from 14.14.3 to 15.5.0 and update release plugins ([@SergeAstapov](https://github.com/SergeAstapov))
+* `tracked-toolbox`
+  * [#212](https://github.com/tracked-tools/tracked-toolbox/pull/212) Update to latest blueprint setup ([@SergeAstapov](https://github.com/SergeAstapov))
+  * [#106](https://github.com/tracked-tools/tracked-toolbox/pull/106) Bump rollup from 2.70.2 to 3.20.2 ([@SergeAstapov](https://github.com/SergeAstapov))
+  * [#90](https://github.com/tracked-tools/tracked-toolbox/pull/90) Rename addon folder to tracked-toolbox ([@SergeAstapov](https://github.com/SergeAstapov))
+
+#### Committers: 2
+- Sergey Astapov ([@SergeAstapov](https://github.com/SergeAstapov))
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
