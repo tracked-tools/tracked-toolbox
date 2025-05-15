@@ -96,8 +96,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(ember-source@6.4.0(@glimmer/component@2.0.0)(rsvp@4.8.5))
       ember-modifier:
-        specifier: ^4.2.0
-        version: 4.2.0(@babel/core@7.27.1)(ember-source@6.4.0(@glimmer/component@2.0.0)(rsvp@4.8.5))
+        specifier: ^4.2.2
+        version: 4.2.2(@babel/core@7.27.1)
       ember-qunit:
         specifier: ^9.0.2
         version: 9.0.2(@ember/test-helpers@5.2.2(@babel/core@7.27.1))(ember-source@6.4.0(@glimmer/component@2.0.0)(rsvp@4.8.5))(qunit@2.24.1)
@@ -2954,13 +2954,8 @@ packages:
     peerDependencies:
       ember-source: '>= 5'
 
-  ember-modifier@4.2.0:
-    resolution: {integrity: sha512-BJ48eTEGxD8J7+lofwVmee7xDgNDgpr5dd6+MSu4gk+I6xb35099RMNorXY5hjjwMJEyi/IRR6Yn3M7iJMz8Zw==}
-    peerDependencies:
-      ember-source: ^3.24 || >=4.0
-    peerDependenciesMeta:
-      ember-source:
-        optional: true
+  ember-modifier@4.2.2:
+    resolution: {integrity: sha512-pPYBAGyczX0hedGWQFQOEiL9s45KS9efKxJxUQkMLjQyh+1Uef1mcmAGsdw2KmvNupITkE/nXxmVO1kZ9tt3ag==}
 
   ember-qunit@9.0.2:
     resolution: {integrity: sha512-vAuumvTYgfFpP0LgK1uw2vBEnD7bv1JYh0JUwkFfBiAkCGV7HkjVWNcgQ2agwarfzxLgEaC0hWlOn9adwJmlNg==}
@@ -10330,14 +10325,12 @@ snapshots:
     dependencies:
       ember-source: 6.4.0(@glimmer/component@2.0.0)(rsvp@4.8.5)
 
-  ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.4.0(@glimmer/component@2.0.0)(rsvp@4.8.5)):
+  ember-modifier@4.2.2(@babel/core@7.27.1):
     dependencies:
       '@embroider/addon-shim': 1.10.0
       decorator-transforms: 2.3.0(@babel/core@7.27.1)
       ember-cli-normalize-entity-name: 1.0.0
       ember-cli-string-utils: 1.1.0
-    optionalDependencies:
-      ember-source: 6.4.0(@glimmer/component@2.0.0)(rsvp@4.8.5)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
