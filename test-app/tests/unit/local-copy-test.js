@@ -140,4 +140,106 @@ module('Unit | Utils | @localCopy', () => {
     );
     assert.strictEqual(remote.value, 789, 'remote value is updated');
   });
+
+  test('it does not invalidate the cache when value is strict equal', function (assert) {
+    class Remote {
+      value = 123;
+    }
+
+    let remote = new Remote();
+
+    class Local {
+      remote = remote;
+
+      @localCopy('remote.value') value;
+    }
+
+    let local = new Local();
+
+    // set the value before reading it
+    local.value = 456;
+
+    assert.strictEqual(local.value, 456, 'local value updates correctly');
+    assert.strictEqual(remote.value, 123, 'remote value does not update');
+
+    remote.value = 123;
+
+    assert.strictEqual(local.value, 456, 'local value is the same');
+    assert.strictEqual(remote.value, 123, 'remote value is updated');
+  });
+
+  test('it does invalidate the cache when value is not strict equal', function (assert) {
+    class Remote {
+      value = { number: 123 };
+    }
+
+    let remote = new Remote();
+
+    class Local {
+      remote = remote;
+
+      @localCopy('remote.value') value;
+    }
+
+    let local = new Local();
+
+    // set the value before reading it
+    local.value = { number: 456 };
+
+    assert.strictEqual(
+      local.value.number,
+      456,
+      'local value updates correctly',
+    );
+    assert.strictEqual(
+      remote.value.number,
+      123,
+      'remote value does not update',
+    );
+
+    remote.value = { number: 123 };
+
+    assert.strictEqual(
+      local.value.number,
+      123,
+      'local value updates correctly',
+    );
+    assert.strictEqual(remote.value.number, 123, 'remote value is updated');
+  });
+
+  test('it does not invalidate the cache when value is equal according to compare function', function (assert) {
+    class Remote {
+      value = { number: 123 };
+    }
+
+    let remote = new Remote();
+
+    class Local {
+      remote = remote;
+
+      @localCopy('remote.value', undefined, (a, b) => a.number === b.number)
+      value;
+    }
+
+    let local = new Local();
+
+    // set the value before reading it
+    local.value = { number: 456 };
+
+    assert.strictEqual(
+      local.value.number,
+      456,
+      'local value updates correctly',
+    );
+    assert.strictEqual(
+      remote.value.number,
+      123,
+      'remote value does not update',
+    );
+
+    remote.value = { number: 123 };
+
+    assert.strictEqual(local.value.number, 456, 'local value is the same');
+    assert.strictEqual(remote.value.number, 123, 'remote value is updated');
+  });
 });
