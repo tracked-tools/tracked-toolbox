@@ -22,6 +22,10 @@ ember install tracked-toolbox
 
 #### `@cached`
 
+> [!TIP]
+> If you're using Ember v4.1.0 or newer, use `@cached` decorator imported from
+> [`@glimmer/tracking`](https://api.emberjs.com/ember/release/functions/@glimmer%2Ftracking/cached) instead. For more information, see [RFC #566](https://rfcs.emberjs.com/id/0566-memo-decorator)
+
 Adds weak-caching to a getter, so that it tracks its execution, and only updates
 when tracked state that the getter used changes.
 

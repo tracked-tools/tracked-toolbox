@@ -1,4 +1,4 @@
-import { assert } from '@ember/debug';
+import { assert, deprecate } from '@ember/debug';
 import { get } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { createCache, getValue } from '@glimmer/tracking/primitives/cache';
@@ -123,6 +123,20 @@ export function trackedReset(memoOrConfig) {
 }
 
 export function cached(target, key, value) {
+  deprecate(
+    "Importing @cached decorator from tracked-toolbox is deprecated. Please replace it with `import { cached } from '@glimmer/tracking';`",
+    false,
+    {
+      id: 'tracked-toolbox::cached-decorator',
+      for: 'tracked-toolbox',
+      since: {
+        available: '2.1.0',
+        enabled: '2.1.0',
+      },
+      until: '3.0.0',
+    },
+  );
+
   assert('@cached can only be used on getters', value && value.get);
 
   let { get, set } = value;
