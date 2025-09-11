@@ -167,9 +167,6 @@ importers:
       decorator-transforms:
         specifier: ^2.3.0
         version: 2.3.0(@babel/core@7.27.1)
-      ember-cache-primitive-polyfill:
-        specifier: ^1.0.0
-        version: 1.0.1(@babel/core@7.27.1)
     devDependencies:
       '@babel/core':
         specifier: ^7.25.2
@@ -1827,12 +1824,6 @@ packages:
       '@babel/core': ^7.0.0
       webpack: '>=2'
 
-  babel-plugin-debug-macros@0.2.0:
-    resolution: {integrity: sha512-Wpmw4TbhR3Eq2t3W51eBAQSdKlr+uAyF0GI4GtPfMCD12Y4cIdpKC9l0RjNTH/P9isFypSqqewMPm7//fnZlNA==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-beta.42
-
   babel-plugin-debug-macros@0.3.4:
     resolution: {integrity: sha512-wfel/vb3pXfwIDZUrkoDrn5FHmlWI96PCJ3UCDv2a86poJ3EQrnArNW5KfHSVJ9IOgxHbo748cQt7sDU+0KCEw==}
     engines: {node: '>=6'}
@@ -2833,10 +2824,6 @@ packages:
     resolution: {integrity: sha512-bcBFDYVTFHyqyq8BNvsj6UO3pE6Uqou/cNmee0WaqBgZ+1nQqFz0UE26usrtnFAT+YaFZSkqF2H36QW84k0/cg==}
     engines: {node: 12.* || 14.* || >= 16}
 
-  ember-cache-primitive-polyfill@1.0.1:
-    resolution: {integrity: sha512-hSPcvIKarA8wad2/b6jDd/eU+OtKmi6uP+iYQbzi5TQpjsqV6b4QdRqrLk7ClSRRKBAtdTuutx+m+X+WlEd2lw==}
-    engines: {node: 10.* || >= 12}
-
   ember-cli-babel-plugin-helpers@1.1.1:
     resolution: {integrity: sha512-sKvOiPNHr5F/60NLd7SFzMpYPte/nnGkq/tMIfXejfKHIhaiIkYFqX8Z9UFTKWLLn+V7NOaby6niNPZUdvKCRw==}
     engines: {node: 6.* || 8.* || >= 10.*}
@@ -2929,10 +2916,6 @@ packages:
     resolution: {integrity: sha512-adcz01uGDrqBPniZrrYx6+tHe58ikc6j+cbX4+3aTG2OVJvQSL+LeisI6ixxtEZeklHRFB6FE6U1etTS6nRVfQ==}
     engines: {node: '>= 18'}
     hasBin: true
-
-  ember-compatibility-helpers@1.2.7:
-    resolution: {integrity: sha512-BtkjulweiXo9c3yVWrtexw2dTmBrvavD/xixNC6TKOBdrixUwU+6nuOO9dufDWsMxoid7MvtmDpzc9+mE8PdaA==}
-    engines: {node: 10.* || >= 12.*}
 
   ember-eslint-parser@0.5.9:
     resolution: {integrity: sha512-IW4/3cEiFp49M2LiKyzi7VcT1egogOe8UxQ9eUKTooenC7Q4qNhzTD6rOZ8j51m8iJC+8hCzjbNCa3K4CN0Hhg==}
@@ -8695,11 +8678,6 @@ snapshots:
       schema-utils: 2.7.1
       webpack: 5.99.8
 
-  babel-plugin-debug-macros@0.2.0(@babel/core@7.27.1):
-    dependencies:
-      '@babel/core': 7.27.1
-      semver: 5.7.2
-
   babel-plugin-debug-macros@0.3.4(@babel/core@7.27.1):
     dependencies:
       '@babel/core': 7.27.1
@@ -9915,16 +9893,6 @@ snapshots:
       - supports-color
       - webpack
 
-  ember-cache-primitive-polyfill@1.0.1(@babel/core@7.27.1):
-    dependencies:
-      ember-cli-babel: 7.26.11
-      ember-cli-version-checker: 5.1.2
-      ember-compatibility-helpers: 1.2.7(@babel/core@7.27.1)
-      silent-error: 1.1.1
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
   ember-cli-babel-plugin-helpers@1.1.1: {}
 
   ember-cli-babel@7.26.11:
@@ -10281,17 +10249,6 @@ snapshots:
       - velocityjs
       - walrus
       - whiskers
-
-  ember-compatibility-helpers@1.2.7(@babel/core@7.27.1):
-    dependencies:
-      babel-plugin-debug-macros: 0.2.0(@babel/core@7.27.1)
-      ember-cli-version-checker: 5.1.2
-      find-up: 5.0.0
-      fs-extra: 9.1.0
-      semver: 5.7.2
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
 
   ember-eslint-parser@0.5.9(@babel/core@7.27.1)(eslint@9.26.0):
     dependencies:
