@@ -1,25 +1,91 @@
 {
-  "private": true,
+  "name": "tracked-toolbox",
+  "version": "2.0.0",
+  "description": "Helpful autotracking utilities",
+  "keywords": [
+    "ember-addon"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:tracked-tools/tracked-toolbox.git"
   },
+  "license": "MIT",
+  "author": "",
+  "files": [
+    "addon-main.cjs",
+    "declarations",
+    "dist"
+  ],
   "scripts": {
-    "build": "pnpm --filter tracked-toolbox build",
-    "lint": "pnpm --filter '*' lint",
-    "lint:fix": "pnpm --filter '*' lint:fix",
-    "prepare": "pnpm build",
-    "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefixColors auto",
-    "start:addon": "pnpm --filter tracked-toolbox start --no-watch.clearScreen",
-    "start:test-app": "pnpm --filter test-app start",
-    "test": "pnpm --filter '*' test",
-    "test:ember": "pnpm --filter '*' test:ember"
+    "build": "rollup --config",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",
+    "lint:format": "prettier . --cache --check",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js:fix": "eslint . --fix",
+    "start": "vite dev",
+    "test": "vite build --mode=development --out-dir dist-tests && testem --file testem.cjs ci --port 0",
+    "prepack": "rollup --config"
+  },
+  "dependencies": {
+    "@embroider/addon-shim": "^1.8.9",
+    "decorator-transforms": "^2.2.2",
+    "ember-cache-primitive-polyfill": "^1.0.0"
   },
   "devDependencies": {
-    "concurrently": "^9.1.2",
-    "prettier": "^3.5.3",
-    "prettier-plugin-ember-template-tag": "^2.0.5",
-    "release-plan": "^0.16.0"
+    "@babel/core": "^7.25.2",
+    "@babel/eslint-parser": "^7.25.1",
+    "@babel/runtime": "^7.25.6",
+    "@ember/app-tsconfig": "^1.0.0",
+    "@ember/library-tsconfig": "^1.0.0",
+    "@ember/test-helpers": "^5.2.1",
+    "@ember/test-waiters": "^4.1.1",
+    "@embroider/addon-dev": "^8.1.0",
+    "@embroider/compat": "^4.1.0",
+    "@embroider/core": "^4.1.0",
+    "@embroider/macros": "^1.18.0",
+    "@embroider/vite": "^1.1.5",
+    "@eslint/js": "^9.17.0",
+    "@glimmer/component": "^2.0.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "babel-plugin-ember-template-compilation": "^2.2.5",
+    "concurrently": "^9.0.1",
+    "ember-qunit": "^9.0.2",
+    "ember-resolver": "^13.1.0",
+    "ember-source": "^6.3.0",
+    "ember-template-lint": "^7.9.0",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-ember": "^12.3.3",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^17.15.1",
+    "globals": "^16.1.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-ember-template-tag": "^2.0.4",
+    "qunit": "^2.24.1",
+    "qunit-dom": "^3.4.0",
+    "release-plan": "^0.16.0",
+    "rollup": "^4.22.5",
+    "testem": "^3.15.1",
+    "vite": "^6.2.4"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs"
+  },
+  "imports": {
+    "#src/*": "./src/*"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./addon-main.js": "./addon-main.cjs"
   },
   "packageManager": "pnpm@10.0.0",
   "volta": {
