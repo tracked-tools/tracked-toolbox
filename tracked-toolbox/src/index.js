@@ -25,7 +25,7 @@ function getOrCreateMeta(instance, metas, initializer) {
   return meta;
 }
 
-export function localCopy(memo, initializer) {
+export function localCopy(memo, initializer, comparator = (a, b) => a === b) {
   assert(
     `@localCopy() must be given a memo path as its first argument, received \`${String(
       memo,
@@ -45,7 +45,7 @@ export function localCopy(memo, initializer) {
 
         let incomingValue = memoFn(this, prevRemote);
 
-        if (prevRemote !== incomingValue) {
+        if (!comparator(prevRemote, incomingValue)) {
           // If the incoming value is not the same as the previous incoming value,
           // update the local value to match the new incoming value, and update
           // the previous incoming value.

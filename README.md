@@ -3,12 +3,10 @@
 Helpful utilities for writing applications with Ember Octane's revision
 tracking!
 
-
 ## Compatibility
 
-* Ember.js v3.20 or above
-* Embroider or ember-auto-import v2.0.0 or above (this is [v2 addon](https://emberjs.github.io/rfcs/0507-embroider-v2-package-format.html))
-
+- Ember.js v3.20 or above
+- Embroider or ember-auto-import v2.0.0 or above (this is [v2 addon](https://emberjs.github.io/rfcs/0507-embroider-v2-package-format.html))
 
 ## Installation
 
@@ -48,12 +46,12 @@ class Person {
 
 Sometimes, a given getter has to run an expensive computation, like a complex
 math calculation or a data fetch. In those cases, you may want to add a layer of
-caching -- but caching by *value* can also be very costly, especially if your
+caching -- but caching by _value_ can also be very costly, especially if your
 cache key is an object, not just a simple value. `@cached` allows you to have a
 cache key that is extremely cheap: simply whether any of the tracked properties
 used by the getter have changed.
 
-As with caching in general, you should still only apply this when you *know* you
+As with caching in general, you should still only apply this when you _know_ you
 need it (measure the performance first!). While it is as cheap a kind of caching
 as possible, it is still not free, requiring both checking whether the tracked
 properties have updated and the memory cost of their previous values: low but
@@ -75,20 +73,20 @@ class Counter {
 
 ##### When to use it
 
-`@tracked` updates *any* time you set a value, even if it's the same value. So,
+`@tracked` updates _any_ time you set a value, even if it's the same value. So,
 for example, if a tracked property depends on user input, if they set it to the
 same value, it would trigger updates. Most of the time, this doesn't really
 matter, but sometimes updates depending on that can be very expensive. Using
 `@dedupeTracked` solves this problem, while adding the cost of a small cache.
 
-As with the other caching utilities, don't reach for this *every* time: caching
+As with the other caching utilities, don't reach for this _every_ time: caching
 is sometimes more expensive than just recomputing values!
 
 ### Forking tracked state
 
 In general, you should prefer to derive component state from the arguments to
 the component, rather than creating new tracked state. However, there are times
-when a component actually does logically need to generate *new* tracked state
+when a component actually does logically need to generate _new_ tracked state
 which still needs to update when its arguments change, but which is still local
 to the component.
 
@@ -137,6 +135,22 @@ export default class CustomInput extends Component {
 If the initializer is a function, it will be called and its return value will be
 used as the default value.
 
+A custom compare function can be provided as the third optional argument.
+When setting the remote value, the local copy of it will only be preserved when the
+new remote value is strict equal to the previous (`===`). With the compare function,
+this behaviour can be customized, for example for considering complex values as the same:
+
+```js
+export default class CustomInput extends Component {
+  @localCopy(
+    'args.model',
+    {},
+    (a, b) => JSON.stringify(a) === JSON.stringify(b),
+  )
+  model;
+}
+```
+
 #### `@trackedReset`
 
 Similar to `@localCopy`, but instead of copying the remote value, it will reset
@@ -177,7 +191,6 @@ component instance and simply update its arguments.
 ## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
-
 
 ## License
 
