@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2025-12-30)
+
+* tracked-toolbox 2.2.0 (minor)
+
+#### :rocket: Enhancement
+* `tracked-toolbox`
+  * [#226](https://github.com/tracked-tools/tracked-toolbox/pull/226) Add support for custom comparator function in localCopy ([@simonihmig](https://github.com/simonihmig))
+
+#### :house: Internal
+* [#244](https://github.com/tracked-tools/tracked-toolbox/pull/244) pnpm dlx create-release-plan-setup@5.1.0 --update ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 2
+- Simon Ihmig ([@simonihmig](https://github.com/simonihmig))
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2025-09-14)
 
 * tracked-toolbox 2.1.0 (minor)
