@@ -20,6 +20,7 @@ module.exports = async function () {
             'ember-qunit': '^5.1.5',
             'ember-resolver': '^8.0.0',
             'ember-source': '~3.20.5',
+            'ember-cache-primitive-polyfill': '^1.0.0',
           },
         },
       },
