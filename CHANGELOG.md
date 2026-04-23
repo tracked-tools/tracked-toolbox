@@ -1,5 +1,19 @@
 # Changelog
 
+## Release (2026-04-23)
+
+* tracked-toolbox 3.0.0 (major)
+
+#### :boom: Breaking Change
+* `tracked-toolbox`
+  * [#246](https://github.com/tracked-tools/tracked-toolbox/pull/246) Remove ember-cache-primitive-polyfill ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### :house: Internal
+* [#245](https://github.com/tracked-tools/tracked-toolbox/pull/245) pnpm dlx create-release-plan-setup@latest ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2025-12-30)
 
 * tracked-toolbox 2.2.0 (minor)
