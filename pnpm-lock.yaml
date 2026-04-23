@@ -18,8 +18,8 @@ importers:
         specifier: ^2.0.5
         version: 2.0.5(prettier@3.5.3)
       release-plan:
-        specifier: ^0.17.0
-        version: 0.17.2
+        specifier: ^0.18.0
+        version: 0.18.0
 
   test-app:
     devDependencies:
@@ -3695,8 +3695,8 @@ packages:
     resolution: {integrity: sha512-8aCohiDo4jwjOwma4FmYFd3i97urZulL8XL24nIPxuE+GZnfsAyy/g2Shqx6OjUiFKUXZM+Yy+KHnOmmA3FVcg==}
     engines: {node: '>= 4.0'}
 
-  github-changelog@2.1.2:
-    resolution: {integrity: sha512-psDEGxwD5fWDLOW+BOORg1JgZOnbCuMhNLevsD/nP7QVXEVExUGnXBP6MmrFm0hAao9LgBLSBKfcNzGuwecRDA==}
+  github-changelog@2.1.4:
+    resolution: {integrity: sha512-mZQF/YC9OR8XMGpYlLQqG66RiKwlaQZ7rXTZug28oOYkzOXd0acszuvYHVzPlYmns1aDDSwQkbzFxNOYpWhmig==}
     engines: {node: 18.* || 20.* || >= 22}
     hasBin: true
 
@@ -3713,6 +3713,7 @@ packages:
 
   glob@10.4.5:
     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   glob@5.0.15:
@@ -5479,8 +5480,8 @@ packages:
     resolution: {integrity: sha512-cnE+y8bz4NhMjISKbgeVJtqNbtf5QpjZP+Bslo+UqkIt9QPnX9q095eiRRASJG1/tz6dlNr6Z5NsBiWYokp6EQ==}
     hasBin: true
 
-  release-plan@0.17.2:
-    resolution: {integrity: sha512-LgE/3CU8sFZt28uJR886xvWdw/CL0g5g5YSFTAJUvUy5qdERZdcc1pu317nKpYFs/yEDjiUasLj3rxnXBJf1zA==}
+  release-plan@0.18.0:
+    resolution: {integrity: sha512-WzP+O+XRF4AqhTDQK84FovY+TxHyC8J7QWoOwxnrvVjyHns417l1FUldboRhBYua5Pej6Yg/2jH1dEH2MRNHeA==}
     hasBin: true
 
   remote-git-tags@3.0.0:
@@ -6113,6 +6114,7 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   temp-dir@2.0.0:
     resolution: {integrity: sha512-aoBAniQmmwtcKp/7BzsH8Cxzv8OL736p7v1ihGb5e9DJ9kTwGWHrQrVB5+lfVDzfGrdRzXch+ig7LHaY1JTOrg==}
@@ -11459,7 +11461,7 @@ snapshots:
 
   git-repo-info@2.1.1: {}
 
-  github-changelog@2.1.2:
+  github-changelog@2.1.4:
     dependencies:
       '@manypkg/get-packages': 2.2.2
       chalk: 4.1.2
@@ -13317,7 +13319,7 @@ snapshots:
     dependencies:
       jsesc: 3.0.2
 
-  release-plan@0.17.2:
+  release-plan@0.18.0:
     dependencies:
       '@manypkg/get-packages': 2.2.2
       '@npmcli/package-json': 6.1.1
@@ -13327,7 +13329,7 @@ snapshots:
       cli-highlight: 2.1.11
       execa: 9.5.3
       fs-extra: 11.3.0
-      github-changelog: 2.1.2
+      github-changelog: 2.1.4
       js-yaml: 4.1.0
       latest-version: 9.0.0
       parse-github-repo-url: 1.4.1
