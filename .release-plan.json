@@ -1,18 +1,8 @@
 {
   "solution": {
     "tracked-toolbox": {
-      "impact": "major",
-      "oldVersion": "2.2.0",
-      "newVersion": "3.0.0",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "major",
-          "reason": "Appears in changelog section :boom: Breaking Change"
-        }
-      ],
-      "pkgJSONPath": "./tracked-toolbox/package.json"
+      "oldVersion": "3.0.0"
     }
   },
-  "description": "## Release (2026-04-23)\n\n* tracked-toolbox 3.0.0 (major)\n\n#### :boom: Breaking Change\n* `tracked-toolbox`\n  * [#246](https://github.com/tracked-tools/tracked-toolbox/pull/246) Remove ember-cache-primitive-polyfill ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### :house: Internal\n* [#245](https://github.com/tracked-tools/tracked-toolbox/pull/245) pnpm dlx create-release-plan-setup@latest ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "\n\n\n\n"
 }
